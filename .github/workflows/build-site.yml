@@ -16,7 +16,7 @@ jobs:
       - name: Checkout notegen
         uses: actions/checkout@v4
         with:
-          repository: owner/notegen
+          repository: p4sttt/notegen
           path: notegen
 
       - name: Build notegen image
@@ -30,7 +30,7 @@ jobs:
             -v "$PWD/site:/out" \
             -e ASTRO_SITE="https://${{ github.repository_owner }}.github.io" \
             -e ASTRO_BASE="/${{ github.event.repository.name }}" \
-            ghcr.io/p4sttt/notegen:latest
+            notegen
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
