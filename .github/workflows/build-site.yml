@@ -1,0 +1,38 @@
+name: Build notes site
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout notes
+        uses: actions/checkout@v4
+        with:
+          path: vault
+
+      - name: Checkout notegen
+        uses: actions/checkout@v4
+        with:
+          repository: owner/notegen
+          path: notegen
+
+      - name: Build notegen image
+        run: docker build -t notegen ./notegen
+
+      - name: Build static site
+        run: |
+          mkdir -p site
+          docker run --rm \
+            -v "$PWD/vault:/vault:ro" \
+            -v "$PWD/site:/out" \
+            -e ASTRO_SITE="https://${{ github.repository_owner }}.github.io" \
+            -e ASTRO_BASE="/${{ github.event.repository.name }}" \
+            ghcr.io/p4sttt/notegen:latest
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
