@@ -1,6 +1,7 @@
 name: Build notes site
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
 
