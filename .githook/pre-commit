@@ -1,0 +1,19 @@
+#!/bin/sh
+set -eu
+
+git -c core.quotepath=false diff --cached --name-only --diff-filter=ACMR -- '*.md' '*.ipynb' | while IFS= read -r path; do
+    if ! git diff --quiet -- "$path"; then
+        echo "pre-commit: $path has unstaged changes; stage or stash them first." >&2
+        exit 1
+    fi
+done
+
+python3 scripts/format_markdown.py --staged
+
+git -c core.quotepath=false diff --cached --name-only --diff-filter=ACMR -- '*.md' '*.ipynb' | while IFS= read -r path; do
+    git add -- "$path"
+done
+
+python3 scripts/update_changelog.py --staged
+
+git add changelog.jsonl 2>/dev/null || true

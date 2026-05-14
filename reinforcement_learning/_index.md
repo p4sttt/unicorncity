@@ -1,6 +1,6 @@
 ---
 title: "Обучение с подкреплением"
-draft: false
+status: done
 ---
 
 Заметки и конспекты по изучению обучения с подкреплением
@@ -16,4 +16,3 @@ draft: false
 ## Видеолекции
 
 - [Машинное обучение с подкреплением](https://teach-in.ru/course/reinforcement-learning)
-

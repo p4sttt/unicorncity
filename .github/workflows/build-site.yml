@@ -2,6 +2,11 @@ name: Build notes site
 
 on:
   workflow_dispatch:
+    inputs:
+      notegen_image:
+        description: Docker image tag to use for the frontend build
+        required: false
+        default: ghcr.io/p4sttt/notegen:latest
   push:
     branches: [main]
 
@@ -17,20 +22,13 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NOTEGEN_IMAGE: ${{ github.event.inputs.notegen_image || 'ghcr.io/p4sttt/notegen:latest' }}
     steps:
       - name: Checkout notes
         uses: actions/checkout@v4
         with:
           path: vault
-
-      - name: Checkout notegen
-        uses: actions/checkout@v4
-        with:
-          repository: p4sttt/notegen
-          path: notegen
-
-      - name: Build notegen image
-        run: docker build -t notegen ./notegen
 
       - name: Build static site
         run: |
@@ -40,7 +38,7 @@ jobs:
             -v "$PWD/site:/out" \
             -e ASTRO_SITE="https://${{ github.repository_owner }}.github.io" \
             -e ASTRO_BASE="/${{ github.event.repository.name }}" \
-            notegen
+            "$NOTEGEN_IMAGE"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

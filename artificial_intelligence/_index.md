@@ -1,6 +1,6 @@
 ---
 title: "Глубокое обучение"
-draft: false
+status: done
 ---
 
 Заметки по изучению искуственного интеллекта собранные с разных источников
@@ -38,3 +38,4 @@ draft: false
 ## LLM
 
 - [CS224N: Natural Language Processing with Deep Learning](https://web.stanford.edu/class/cs224n/)
+- [CS25: Transformers United V6](https://web.stanford.edu/class/cs25/)

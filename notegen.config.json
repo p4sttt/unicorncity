@@ -1,0 +1,27 @@
+{
+  "changelogPath": "changelog.jsonl",
+  "siteText": {
+    "metaDescription": "Конспекты и заметки по машинному обучению, статистике, оптимизации и обучению с подкреплением.",
+    "brand": "uniCORNcity",
+    "heroEyebrow": "notes vault",
+    "heroTitle": "uniCORNcity",
+    "heroBody": "Конспекты, статьи и рабочие заметки по AI, математической статистике, оптимизации и reinforcement learning.",
+    "heroTag": "Machine learning notes",
+    "ru": {
+      "metaDescription": "Конспекты и заметки по машинному обучению, статистике, оптимизации и обучению с подкреплением.",
+      "brand": "uniCORNcity",
+      "heroEyebrow": "notes vault",
+      "heroTitle": "uniCORNcity",
+      "heroBody": "Конспекты, статьи и рабочие заметки по AI, математической статистике, оптимизации и reinforcement learning.",
+      "heroTag": "Machine learning notes"
+    },
+    "en": {
+      "metaDescription": "Notes on machine learning, statistics, optimization, and reinforcement learning.",
+      "brand": "uniCORNcity",
+      "heroEyebrow": "notes vault",
+      "heroTitle": "uniCORNcity",
+      "heroBody": "Study notes, article summaries, and working notes on AI, mathematical statistics, optimization, and reinforcement learning.",
+      "heroTag": "Machine learning notes"
+    }
+  }
+}

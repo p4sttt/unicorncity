@@ -1,0 +1,20 @@
+# Repository/service files
+.git/
+.github/
+.obsidian/
+.venv/
+.codex/
+.codex-skills/
+
+# Local/editor metadata
+.DS_Store
+Thumbs.db
+
+# Repository docs that should not become notes
+README.md
+LICENSE
+
+# Temporary files
+*.tmp
+*.bak
+*.swp

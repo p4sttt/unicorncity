@@ -2,7 +2,7 @@
 title: Условия Каруша-Куна-Таккера
 slug: karush-kuhn-tucker
 date: 2026-04-17
-draft: false
+status: done
 ---
 
 # Введение
