@@ -1,7 +1,12 @@
+---
+status: "draft"
+---
+
+
 Нормальное распредление называние распредление случайной величины $x \sim \mathcal{N(\mu, \sigma)}$ с плотность распредение
 
 $$
-f_{x}(t)=\frac{1}{\sqrt{ 2\pi\sigma^2 }}\exp \left( -\frac{(t-\mu)^2}{2\sigma^2} \right) 
+f_{x}(t)=\frac{1}{\sqrt{ 2\pi\sigma^2 }}\exp \left( -\frac{(t-\mu)^2}{2\sigma^2} \right)
 $$
 
 Соотвественно
@@ -19,29 +24,29 @@ $$
 (TODO: график нормального распредления через python)
 
  Центральные моменты трнетьего и четвертого порядка:
- - коэфциенетр ассиемтрии (третьей цегтарльый момент): наскольок перекосило распредленеие 
+ - коэфциенетр ассиемтрии (третьей цегтарльый момент): наскольок перекосило распредленеие
  - куртосис: насколько толчные хвосты, вычисляет выбросы
 
-Многомерное нормальное распредени 
+Многомерное нормальное распредени
 
 $$
 x \sim \mathcal{N}(\mu, \Sigma)
 $$
 
 $$
-f(t_{1},\dots,t_{n})=\frac{1}{(\sqrt{ 2\pi })^n}\cdot\frac{1}{\det\Sigma} \cdot \exp \left( \dots \right) 
+f(t_{1},\dots,t_{n})=\frac{1}{(\sqrt{ 2\pi })^n}\cdot\frac{1}{\det\Sigma} \cdot \exp \left( \dots \right)
 $$
 
 $$
 \begin{bmatrix}
 X \\
-Y 
+Y
 \end{bmatrix} \sim
 \mathcal{N} \begin{bmatrix}
 \begin{matrix}
 \mu_{X} \\
 \mu_{Y}
-\end{matrix}, & 
+\end{matrix}, &
 
 \end{bmatrix}
 $$

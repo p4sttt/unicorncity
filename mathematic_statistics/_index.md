@@ -1,7 +1,6 @@
 ---
 title: "Математическая статистика"
-description: ""
+description: "Конспекты по курсу математической статистики"
 date: 2026-05-12
-status: in-progress
+status: done
 ---
-

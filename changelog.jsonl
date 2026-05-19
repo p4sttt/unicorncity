@@ -22,3 +22,7 @@
 {"timestamp":"2026-05-14T15:01:40Z","action":"updated","kind":"note","path":"optimization_methods/karush_kuhn-tucker.md","title":"Условия Каруша-Куна-Таккера","topic":"Методы оптимизации","source":"pre-commit"}
 {"timestamp":"2026-05-14T15:01:40Z","action":"updated","kind":"topic","path":"reinforcement_learning/_index.md","title":"Обучение с подкреплением","source":"pre-commit"}
 {"timestamp":"2026-05-14T15:01:40Z","action":"updated","kind":"note","path":"reinforcement_learning/multi_armed_bandits.md","title":"Многорукие бандиты","topic":"Обучение с подкреплением","source":"pre-commit"}
+{"timestamp":"2026-05-19T11:53:07Z","action":"updated","kind":"topic","path":"mathematic_statistics/_index.md","title":"Математическая статистика","source":"pre-commit"}
+{"timestamp":"2026-05-19T11:53:07Z","action":"updated","kind":"note","path":"mathematic_statistics/coveregence.md","title":"Типы сходимости. Закон больших чисел","topic":"Математическая статистика","source":"pre-commit"}
+{"timestamp":"2026-05-19T11:53:07Z","action":"updated","kind":"note","path":"mathematic_statistics/gaussian_dist.ipynb","title":"Gaussian Dist","topic":"Математическая статистика","source":"pre-commit"}
+{"timestamp":"2026-05-19T11:53:07Z","action":"updated","kind":"note","path":"mathematic_statistics/gaussian_dist.md","title":"Gaussian Dist","topic":"Математическая статистика","source":"pre-commit"}
