@@ -26,3 +26,6 @@
 {"timestamp":"2026-05-19T11:53:07Z","action":"updated","kind":"note","path":"mathematic_statistics/coveregence.md","title":"Типы сходимости. Закон больших чисел","topic":"Математическая статистика","source":"pre-commit"}
 {"timestamp":"2026-05-19T11:53:07Z","action":"updated","kind":"note","path":"mathematic_statistics/gaussian_dist.ipynb","title":"Gaussian Dist","topic":"Математическая статистика","source":"pre-commit"}
 {"timestamp":"2026-05-19T11:53:07Z","action":"updated","kind":"note","path":"mathematic_statistics/gaussian_dist.md","title":"Gaussian Dist","topic":"Математическая статистика","source":"pre-commit"}
+{"timestamp":"2026-05-31T00:53:15Z","action":"created","kind":"topic","path":"infra/_index.md","title":"Backend","source":"pre-commit"}
+{"timestamp":"2026-05-31T00:53:15Z","action":"created","kind":"note","path":"infra/distributed_databases.md","title":"Распределенные Базы Данных","topic":"Backend","source":"pre-commit"}
+{"timestamp":"2026-05-31T00:53:15Z","action":"updated","kind":"topic","path":"mathematic_statistics/_index.md","title":"Математическая статистика","source":"pre-commit"}
