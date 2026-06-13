@@ -36,3 +36,10 @@
 {"timestamp":"2026-06-04T00:13:50Z","action":"created","kind":"note","path":"dev/virtual_threads.md","title":"Virtual Threads in Java","topic":"Backend","source":"pre-commit"}
 {"timestamp":"2026-06-04T00:13:50Z","action":"created","kind":"note","path":"dev/ydb.md","title":"Yandex DataBase","topic":"Backend","source":"pre-commit"}
 {"timestamp":"2026-06-04T00:13:50Z","action":"created","kind":"note","path":"engeng.md","title":"English","source":"pre-commit"}
+{"timestamp":"2026-06-13T22:19:42Z","action":"created","kind":"topic","path":"physics/_index.md","title":"Физика","source":"pre-commit"}
+{"timestamp":"2026-06-13T22:19:42Z","action":"created","kind":"topic","path":"physics/electrodynamics/_index.md","title":"Электродинамика","topic":"Физика","source":"pre-commit"}
+{"timestamp":"2026-06-13T22:19:42Z","action":"created","kind":"note","path":"physics/electrodynamics/formula_checklist.md","title":"Чеклист формул по электродинамике","topic":"Электродинамика","source":"pre-commit"}
+{"timestamp":"2026-06-13T22:19:42Z","action":"created","kind":"note","path":"physics/electrodynamics/methods_checklist.md","title":"Чеклист по методам решения задач","topic":"Электродинамика","source":"pre-commit"}
+{"timestamp":"2026-06-13T22:19:42Z","action":"created","kind":"note","path":"physics/electrodynamics/part_1.md","title":"Электростатика, магнитостатика и постоянный ток","topic":"Электродинамика","source":"pre-commit"}
+{"timestamp":"2026-06-13T22:19:42Z","action":"created","kind":"note","path":"physics/electrodynamics/part_2.md","title":"Электродинамика, уравнения Максвелла и излучение","topic":"Электродинамика","source":"pre-commit"}
+{"timestamp":"2026-06-13T22:19:42Z","action":"created","kind":"note","path":"physics/electrodynamics/part_3.md","title":"Квазистационарные процессы, переменный ток и СТО","topic":"Электродинамика","source":"pre-commit"}
