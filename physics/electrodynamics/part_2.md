@@ -10,7 +10,9 @@ state: done
 
 > **Сила Лоренца** — это полная сила, действующая на точечный электрический заряд $q$, движущийся со скоростью $\vec{v}$ во внешнем электромагнитном поле:
 
-$$ \vec{F} = q\vec{E} + q[\vec{v}, \vec{B}] $$
+$$
+\vec{F} = q\vec{E} + q[\vec{v}, \vec{B}]
+$$
 
 Первое слагаемое представляет собой электрическую силу, совершающую работу над зарядом, а второе — магнитную силу, которая всегда ортогональна направлению движения и работы не совершает.
 
@@ -21,15 +23,21 @@ $$ \vec{F} = q\vec{E} + q[\vec{v}, \vec{B}] $$
 Магнитная сила перпендикулярна скорости, следовательно, кинетическая энергия частицы остается постоянной.
 - Если начальная скорость $\vec{v}$ перпендикулярна вектору $\vec{B}$, частица движется по окружности радиуса $R$ (ларморов радиус) в плоскости, перпендикулярной магнитному полю. Величина радиуса находится из равенства центростремительной силы и магнитной силы Лоренца:
 
-$$ \frac{m v^2}{R} = q v B \implies R = \frac{m v}{q B} $$
+$$
+\frac{m v^2}{R} = q v B \implies R = \frac{m v}{q B}
+$$
 
-  Период обращения (циклотронный период) равен:
+Период обращения (циклотронный период) равен:
 
-$$ T = \frac{2\pi R}{v} = \frac{2\pi m}{q B} $$
+$$
+T = \frac{2\pi R}{v} = \frac{2\pi m}{q B}
+$$
 
 - Если скорость имеет составляющие как параллельную $\vec{v}_{\parallel}$, так и перпендикулярную $\vec{v}_{\perp}$ к магнитному полю, движение раскладывается на равномерное прямолинейное вдоль силовых линий поля со скоростью $v_{\parallel}$ и вращательное по окружности в поперечной плоскости. Траектория частицы представляет собой винтовую линию (спираль) с шагом:
 
-$$ h = v_{\parallel} T = \frac{2\pi m v_{\parallel}}{q B} $$
+$$
+h = v_{\parallel} T = \frac{2\pi m v_{\parallel}}{q B}
+$$
 
 ---
 
@@ -37,7 +45,9 @@ $$ h = v_{\parallel} T = \frac{2\pi m v_{\parallel}}{q B} $$
 
 > **Закон Фарадея**: ЭДС электромагнитной индукции $\mathcal{E}_i$ в замкнутом проводящем контуре прямо пропорциональна скорости изменения магнитного потока $\Phi_B$ через поверхность, ограниченную этим контуром, взятой с противоположным знаком:
 
-$$ \mathcal{E}_i = -\frac{\mathrm{d}\Phi_B}{\mathrm{d}t} $$
+$$
+\mathcal{E}_i = -\frac{\mathrm{d}\Phi_B}{\mathrm{d}t}
+$$
 
 где магнитный поток $\Phi_B$ определяется как $\Phi_B = \int_S (\vec{B}, \mathrm{d}\vec{S})$.
 
@@ -52,11 +62,15 @@ $$ \mathcal{E}_i = -\frac{\mathrm{d}\Phi_B}{\mathrm{d}t} $$
 
 Собственный магнитный поток контура пропорционален току в нем: $\Phi_B = L I$. При изменении силы тока ЭДС самоиндукции препятствует этому изменению:
 
-$$ \mathcal{E}_s = -\frac{\mathrm{d}(L I)}{\mathrm{d}t} $$
+$$
+\mathcal{E}_s = -\frac{\mathrm{d}(L I)}{\mathrm{d}t}
+$$
 
 При жестком неизменяемом контуре ($L = \text{const}$):
 
-$$ \mathcal{E}_s = -L \frac{\mathrm{d}I}{\mathrm{d}t} $$
+$$
+\mathcal{E}_s = -L \frac{\mathrm{d}I}{\mathrm{d}t}
+$$
 
 Явление самоиндукции приводит к возникновению экстратоков замыкания и размыкания в цепях, содержащих индуктивности.
 
@@ -66,7 +80,9 @@ $$ \mathcal{E}_s = -L \frac{\mathrm{d}I}{\mathrm{d}t} $$
 
 > **Индуктивность** $L$ — это скалярная физическая величина, являющаяся коэффициентом пропорциональности между силой тока $I$ в замкнутом контуре и создаваемым этим током собственным магнитным потоком $\Phi_B$, пронизывающим контур:
 
-$$ \Phi_B = L I $$
+$$
+\Phi_B = L I
+$$
 
 Индуктивность характеризует:
 1. **Геометрические свойства и среду**: величина $L$ зависит исключительно от геометрической формы и размеров контура, числа его витков, а также от магнитных свойств окружающей среды (магнитной проницаемости $\mu$).
@@ -82,16 +98,22 @@ $$ \Phi_B = L I $$
 
 Магнитный поток $\Phi_{12}$, создаваемый током первого контура $I_1$ через поверхность, ограниченную вторым контуром, равен:
 
-$$ \Phi_{12} = M_{12} I_1 $$
+$$
+\Phi_{12} = M_{12} I_1
+$$
 
 Аналогично, магнитный поток $\Phi_{21}$, создаваемый током второго контура $I_2$ через первый контур, равен $\Phi_{21} = M_{21} I_2$.
 Согласно теореме взаимности, коэффициенты пропорциональности (взаимные индуктивности) равны между собой:
 
-$$ M_{12} = M_{21} = M $$
+$$
+M_{12} = M_{21} = M
+$$
 
 Если ток в первом контуре меняется со временем, во втором контуре возникает ЭДС взаимной индукции:
 
-$$ \mathcal{E}_{i2} = -M \frac{\mathrm{d}I_1}{\mathrm{d}t} $$
+$$
+\mathcal{E}_{i2} = -M \frac{\mathrm{d}I_1}{\mathrm{d}t}
+$$
 
 Взаимная индукция лежит в основе принципа работы трансформаторов.
 
@@ -101,15 +123,21 @@ $$ \mathcal{E}_{i2} = -M \frac{\mathrm{d}I_1}{\mathrm{d}t} $$
 
 Полная энергия магнитного поля выражается через макроскопические векторы индукции $\vec{B}$ и напряженности $\vec{H}$ интегрированием по всему пространству:
 
-$$ W_m = \frac{1}{2} \int_V (\vec{B}, \vec{H}) \, \mathrm{d}V $$
+$$
+W_m = \frac{1}{2} \int_V (\vec{B}, \vec{H}) \, \mathrm{d}V
+$$
 
 - **Объемная плотность энергии магнитного поля** $w_m$ характеризует локальное распределение энергии в пространстве:
 
-$$ w_m = \frac{1}{2} (\vec{B}, \vec{H}) $$
+$$
+w_m = \frac{1}{2} (\vec{B}, \vec{H})
+$$
 
 В изотропной среде с магнитной проницаемостью $\mu$ материальное уравнение имеет вид $\vec{B} = \mu\mu_0\vec{H}$, что позволяет записать:
 
-$$ w_m = \frac{\mu\mu_0 H^2}{2} = \frac{B^2}{2\mu\mu_0} $$
+$$
+w_m = \frac{\mu\mu_0 H^2}{2} = \frac{B^2}{2\mu\mu_0}
+$$
 
 ---
 
@@ -117,7 +145,9 @@ $$ w_m = \frac{\mu\mu_0 H^2}{2} = \frac{B^2}{2\mu\mu_0} $$
 
 Для системы из $N$ контуров, по которым протекают токи $I_i$, полная энергия создаваемого ими магнитного поля складывается из собственных энергий самоиндукции контуров и энергий их взаимного взаимодействия:
 
-$$ W_m = \frac{1}{2} \sum_{i=1}^N I_i \Phi_i = \frac{1}{2} \sum_{i=1}^N L_i I_i^2 + \frac{1}{2} \sum_{i \neq j}^N M_{ij} I_i I_j $$
+$$
+W_m = \frac{1}{2} \sum_{i=1}^N I_i \Phi_i = \frac{1}{2} \sum_{i=1}^N L_i I_i^2 + \frac{1}{2} \sum_{i \neq j}^N M_{ij} I_i I_j
+$$
 
 где $\Phi_i$ — полный магнитный поток, сцепленный с $i$-м контуром, $L_i$ — индуктивность $i$-го контура, а $M_{ij}$ — взаимная индуктивность между $i$-м и $j$-м контурами.
 
@@ -127,7 +157,9 @@ $$ W_m = \frac{1}{2} \sum_{i=1}^N I_i \Phi_i = \frac{1}{2} \sum_{i=1}^N L_i I_i^
 
 > **Ток смещения** — это физическая величина, вводимая пропорционально скорости изменения электрического поля во времени и определяемая вектором плотности тока смещения:
 
-$$ \vec{j}_{\text{см}} = \frac{\partial \vec{D}}{\partial t} $$
+$$
+\vec{j}_{\text{см}} = \frac{\partial \vec{D}}{\partial t}
+$$
 
 Максвелл ввел этот член во второе уравнение поля (закон Ампера-Максвелла), обобщив его на случай нестационарных полей. Ток смещения не связан с переносом реальных зарядов, однако его изменение во времени создает в пространстве вихревое магнитное поле аналогично токам проводимости. Введение тока смещения позволило замкнуть систему уравнений электродинамики и предсказать существование электромагнитных волн.
 
@@ -172,7 +204,9 @@ $$
 Система уравнений Максвелла сама по себе является недоопределенной (число неизвестных компонент полей превосходит число независимых уравнений). Чтобы решение существовало и было единственным, необходимо задать:
 1. **Материальные уравнения**, характеризующие свойства среды:
 
-$$ \vec{D} = \varepsilon\varepsilon_0 \vec{E}, \quad \vec{B} = \mu\mu_0 \vec{H}, \quad \vec{j} = \sigma \vec{E} $$
+$$
+\vec{D} = \varepsilon\varepsilon_0 \vec{E}, \quad \vec{B} = \mu\mu_0 \vec{H}, \quad \vec{j} = \sigma \vec{E}
+$$
 
 2. **Начальные условия**: распределение векторов полей $\vec{E}(\vec{r}, 0)$ и $\vec{B}(\vec{r}, 0)$ во всем рассматриваемом объеме в начальный момент времени $t = 0$.
 3. **Граничные условия**: поведение полей на внешних границах области (или условие затухания полей на бесконечности).
@@ -185,20 +219,28 @@ $$ \vec{D} = \varepsilon\varepsilon_0 \vec{E}, \quad \vec{B} = \mu\mu_0 \vec{H},
 
 > **Вектор Умова-Пойнтинга** $\vec{S}$ — это вектор плотности потока энергии электромагнитного поля, модуль которого равен энергии, переносимой полем в единицу времени через единичную площадку, перпендикулярную направлению распространения энергии, а направление совпадает с направлением переноса энергии:
 
-$$ \vec{S} = [\vec{E}, \vec{H}] $$
+$$
+\vec{S} = [\vec{E}, \vec{H}]
+$$
 
 **Вывод**:
 Рассмотрим изменение энергии поля в фиксированном объеме $V$. Плотность энергии равна $w = \frac{1}{2}(\vec{E}, \vec{D}) + \frac{1}{2}(\vec{H}, \vec{B})$. Вычислим ее частную производную по времени в линейной изотропной среде:
 
-$$ \frac{\partial w}{\partial t} = \left(\vec{E}, \frac{\partial\vec{D}}{\partial t}\right) + \left(\vec{H}, \frac{\partial\vec{B}}{\partial t}\right) $$
+$$
+\frac{\partial w}{\partial t} = \left(\vec{E}, \frac{\partial\vec{D}}{\partial t}\right) + \left(\vec{H}, \frac{\partial\vec{B}}{\partial t}\right)
+$$
 
 Подставим производные из уравнений Максвелла $\frac{\partial\vec{D}}{\partial t} = \operatorname{rot}\vec{H} - \vec{j}$ и $\frac{\partial\vec{B}}{\partial t} = -\operatorname{rot}\vec{E}$:
 
-$$ \frac{\partial w}{\partial t} = (\vec{E}, \operatorname{rot}\vec{H}) - (\vec{H}, \operatorname{rot}\vec{E}) - (\vec{j}, \vec{E}) $$
+$$
+\frac{\partial w}{\partial t} = (\vec{E}, \operatorname{rot}\vec{H}) - (\vec{H}, \operatorname{rot}\vec{E}) - (\vec{j}, \vec{E})
+$$
 
 Воспользуемся тождеством векторного анализа для дивергенции векторного произведения: $\operatorname{div}[\vec{E}, \vec{H}] = (\vec{H}, \operatorname{rot}\vec{E}) - (\vec{E}, \operatorname{rot}\vec{H})$. Получаем:
 
-$$ \frac{\partial w}{\partial t} = -\operatorname{div}[\vec{E}, \vec{H}] - (\vec{j}, \vec{E}) \implies \frac{\partial w}{\partial t} + \operatorname{div}\vec{S} = -(\vec{j}, \vec{E}) $$
+$$
+\frac{\partial w}{\partial t} = -\operatorname{div}[\vec{E}, \vec{H}] - (\vec{j}, \vec{E}) \implies \frac{\partial w}{\partial t} + \operatorname{div}\vec{S} = -(\vec{j}, \vec{E})
+$$
 
 Это уравнение представляет собой закон сохранения энергии электромагнитного поля в дифференциальной форме. Интеграл от $(\vec{j}, \vec{E})$ определяет джоулевы потери энергии, а поток вектора $\vec{S}$ через границу объема характеризует излучение энергии полем во внешнее пространство.
 
@@ -208,31 +250,45 @@ $$ \frac{\partial w}{\partial t} = -\operatorname{div}[\vec{E}, \vec{H}] - (\vec
 
 Рассмотрим однородную нейтральную среду в отсутствие сторонних токов и зарядов ($\rho = 0, \vec{j} = 0$), характеризующуюся проницаемостями $\varepsilon$ и $\mu$. Уравнения Максвелла принимают вид:
 
-$$ \operatorname{rot}\vec{E} = -\frac{\partial \vec{B}}{\partial t}, \quad \operatorname{rot}\vec{H} = \frac{\partial \vec{D}}{\partial t}, \quad \operatorname{div}\vec{E} = 0, \quad \operatorname{div}\vec{H} = 0 $$
+$$
+\operatorname{rot}\vec{E} = -\frac{\partial \vec{B}}{\partial t}, \quad \operatorname{rot}\vec{H} = \frac{\partial \vec{D}}{\partial t}, \quad \operatorname{div}\vec{E} = 0, \quad \operatorname{div}\vec{H} = 0
+$$
 
 Возьмем операцию ротора от обеих частей первого уравнения:
 
-$$ \operatorname{rot}\operatorname{rot}\vec{E} = -\operatorname{rot}\left(\frac{\partial \vec{B}}{\partial t}\right) $$
+$$
+\operatorname{rot}\operatorname{rot}\vec{E} = -\operatorname{rot}\left(\frac{\partial \vec{B}}{\partial t}\right)
+$$
 
 Используя тождество двойного ротора $\operatorname{rot}\operatorname{rot}\vec{E} = \operatorname{grad}\operatorname{div}\vec{E} - \Delta\vec{E}$ и учитывая $\operatorname{div}\vec{E} = 0$:
 
-$$ \operatorname{rot}\operatorname{rot}\vec{E} = -\Delta\vec{E} $$
+$$
+\operatorname{rot}\operatorname{rot}\vec{E} = -\Delta\vec{E}
+$$
 
 В правой части поменяем местами дифференцирование по времени и пространству, и подставим материальные соотношения $\vec{B} = \mu\mu_0 \vec{H}$ и $\vec{D} = \varepsilon\varepsilon_0 \vec{E}$:
 
-$$ -\operatorname{rot}\left(\frac{\partial \vec{B}}{\partial t}\right) = -\mu\mu_0 \frac{\partial}{\partial t}(\operatorname{rot}\vec{H}) = -\mu\mu_0 \frac{\partial}{\partial t}\left(\varepsilon\varepsilon_0 \frac{\partial\vec{E}}{\partial t}\right) = -\varepsilon\mu \varepsilon_0\mu_0 \frac{\partial^2\vec{E}}{\partial t^2} $$
+$$
+-\operatorname{rot}\left(\frac{\partial \vec{B}}{\partial t}\right) = -\mu\mu_0 \frac{\partial}{\partial t}(\operatorname{rot}\vec{H}) = -\mu\mu_0 \frac{\partial}{\partial t}\left(\varepsilon\varepsilon_0 \frac{\partial\vec{E}}{\partial t}\right) = -\varepsilon\mu \varepsilon_0\mu_0 \frac{\partial^2\vec{E}}{\partial t^2}
+$$
 
 Объединяя результаты, получаем **волновое уравнение для напряженности электрического поля**:
 
-$$ \Delta\vec{E} - \frac{1}{v^2} \frac{\partial^2\vec{E}}{\partial t^2} = 0 $$
+$$
+\Delta\vec{E} - \frac{1}{v^2} \frac{\partial^2\vec{E}}{\partial t^2} = 0
+$$
 
 где скорость распространения волны в среде равна:
 
-$$ v = \frac{1}{\sqrt{\varepsilon\mu \varepsilon_0\mu_0}} = \frac{c}{\sqrt{\varepsilon\mu}} $$
+$$
+v = \frac{1}{\sqrt{\varepsilon\mu \varepsilon_0\mu_0}} = \frac{c}{\sqrt{\varepsilon\mu}}
+$$
 
 Аналогичным образом, беря ротор от уравнения для $\vec{H}$, получается волновое уравнение для магнитного поля:
 
-$$ \Delta\vec{H} - \frac{1}{v^2} \frac{\partial^2\vec{H}}{\partial t^2} = 0 $$
+$$
+\Delta\vec{H} - \frac{1}{v^2} \frac{\partial^2\vec{H}}{\partial t^2} = 0
+$$
 
 ---
 
@@ -242,7 +298,9 @@ $$ \Delta\vec{H} - \frac{1}{v^2} \frac{\partial^2\vec{H}}{\partial t^2} = 0 $$
 
 Для плоской монохроматической электромагнитной волны, распространяющейся в направлении волнового вектора $\vec{k}$, аналитический вид полей записывается как:
 
-$$ \vec{E}(\vec{r}, t) = \vec{E}_0 \cos(\omega t - (\vec{k}, \vec{r}) + \alpha) $$
+$$
+\vec{E}(\vec{r}, t) = \vec{E}_0 \cos(\omega t - (\vec{k}, \vec{r}) + \alpha)
+$$
 
 где $\omega$ — круговая частота колебаний, $\vec{E}_0$ — векторная амплитуда напряженности поля.
 
@@ -252,11 +310,15 @@ $$ \vec{E}(\vec{r}, t) = \vec{E}_0 \cos(\omega t - (\vec{k}, \vec{r}) + \alpha) 
 
 В плоской электромагнитной волне векторы электрического поля $\vec{E}$, магнитного поля $\vec{H}$ и волновой вектор $\vec{k}$ образуют правую тройку взаимно перпендикулярных векторов. Поля являются чисто поперечными:
 
-$$ \vec{E} \perp \vec{H}, \quad \vec{E} \perp \vec{k}, \quad \vec{H} \perp \vec{k} $$
+$$
+\vec{E} \perp \vec{H}, \quad \vec{E} \perp \vec{k}, \quad \vec{H} \perp \vec{k}
+$$
 
 Связь между векторами полей в волне выражается инвариантной формулой:
 
-$$ \vec{H} = \sqrt{\frac{\varepsilon\varepsilon_0}{\mu\mu_0}} [\vec{e}_k, \vec{E}] $$
+$$
+\vec{H} = \sqrt{\frac{\varepsilon\varepsilon_0}{\mu\mu_0}} [\vec{e}_k, \vec{E}]
+$$
 
 где $\vec{e}_k = \vec{k}/k$ — единичный вектор направления распространения волны.
 
@@ -277,11 +339,15 @@ $$ \vec{H} = \sqrt{\frac{\varepsilon\varepsilon_0}{\mu\mu_0}} [\vec{e}_k, \vec{E
 
 Плотность потока энергии переносится вектором Умова-Пойнтинга. Для плоской электромагнитной волны в силу взаимной ортогональности полей модуль плотности потока энергии равен:
 
-$$ S = |[\vec{E}, \vec{H}]| = E H = \sqrt{\frac{\varepsilon\varepsilon_0}{\mu\mu_0}} E^2 $$
+$$
+S = |[\vec{E}, \vec{H}]| = E H = \sqrt{\frac{\varepsilon\varepsilon_0}{\mu\mu_0}} E^2
+$$
 
 Среднее значение плотности потока энергии за период колебаний (интенсивность волны $I$) в вакууме определяется соотношением:
 
-$$ I = \langle S \rangle = \frac{1}{2} E_0 H_0 = \frac{1}{2} c \varepsilon_0 E_0^2 $$
+$$
+I = \langle S \rangle = \frac{1}{2} E_0 H_0 = \frac{1}{2} c \varepsilon_0 E_0^2
+$$
 
 Единица измерения интенсивности в СИ — Вт/м².
 
@@ -291,15 +357,21 @@ $$ I = \langle S \rangle = \frac{1}{2} E_0 H_0 = \frac{1}{2} c \varepsilon_0 E_0
 
 В нестационарном случае четвертое уравнение Максвелла сохраняет свой вид: $\operatorname{div}\vec{B} = 0$. Так как дивергенция магнитного поля равна нулю, его можно представить как ротор некоторого вспомогательного векторного поля $\vec{A}$:
 
-$$ \vec{B} = \operatorname{rot}\vec{A} $$
+$$
+\vec{B} = \operatorname{rot}\vec{A}
+$$
 
 Подставим это выражение во второе уравнение Максвелла (закон электромагнитной индукции):
 
-$$ \operatorname{rot}\vec{E} = -\frac{\partial}{\partial t}(\operatorname{rot}\vec{A}) \implies \operatorname{rot}\left( \vec{E} + \frac{\partial \vec{A}}{\partial t} \right) = 0 $$
+$$
+\operatorname{rot}\vec{E} = -\frac{\partial}{\partial t}(\operatorname{rot}\vec{A}) \implies \operatorname{rot}\left( \vec{E} + \frac{\partial \vec{A}}{\partial t} \right) = 0
+$$
 
 Поскольку ротор векторного выражения в скобках равен нулю во всем пространстве, это поле потенциально. Следовательно, его можно выразить через градиент некоторого скалярного потенциала $\varphi$:
 
-$$ \vec{E} + \frac{\partial \vec{A}}{\partial t} = -\operatorname{grad}\varphi \implies \vec{E} = -\operatorname{grad}\varphi - \frac{\partial \vec{A}}{\partial t} $$
+$$
+\vec{E} + \frac{\partial \vec{A}}{\partial t} = -\operatorname{grad}\varphi \implies \vec{E} = -\operatorname{grad}\varphi - \frac{\partial \vec{A}}{\partial t}
+$$
 
 Таким образом, задание пары потенциалов $(\vec{A}, \varphi)$ полностью и однозначно определяет переменные поля $\vec{E}$ и $\vec{B}$.
 
@@ -311,11 +383,15 @@ $$ \vec{E} + \frac{\partial \vec{A}}{\partial t} = -\operatorname{grad}\varphi \
 
 > **Условие калибровки Лоренца** связывает пространственные и временные производные потенциалов в единую лоренц-инвариантную форму:
 
-$$ \operatorname{div}\vec{A} + \frac{\varepsilon\mu}{c^2} \frac{\partial \varphi}{\partial t} = 0 $$
+$$
+\operatorname{div}\vec{A} + \frac{\varepsilon\mu}{c^2} \frac{\partial \varphi}{\partial t} = 0
+$$
 
 Для вакуума условие записывается в виде:
 
-$$ \operatorname{div}\vec{A} + \frac{1}{c^2} \frac{\partial \varphi}{\partial t} = 0 $$
+$$
+\operatorname{div}\vec{A} + \frac{1}{c^2} \frac{\partial \varphi}{\partial t} = 0
+$$
 
 ---
 
@@ -323,9 +399,13 @@ $$ \operatorname{div}\vec{A} + \frac{1}{c^2} \frac{\partial \varphi}{\partial t}
 
 При наложении калибровочного условия Лоренца уравнения Максвелла для потенциалов разделяются и сводятся к неоднородным волновым уравнениям (уравнениям Даламбера):
 
-$$ \Delta\varphi - \frac{1}{v^2} \frac{\partial^2\varphi}{\partial t^2} = -\frac{\rho}{\varepsilon\varepsilon_0} $$
+$$
+\Delta\varphi - \frac{1}{v^2} \frac{\partial^2\varphi}{\partial t^2} = -\frac{\rho}{\varepsilon\varepsilon_0}
+$$
 
-$$ \Delta\vec{A} - \frac{1}{v^2} \frac{\partial^2\vec{A}}{\partial t^2} = -\mu\mu_0\vec{j} $$
+$$
+\Delta\vec{A} - \frac{1}{v^2} \frac{\partial^2\vec{A}}{\partial t^2} = -\mu\mu_0\vec{j}
+$$
 
 где $v = c/\sqrt{\varepsilon\mu}$ — скорость распространения волн в среде.
 
@@ -335,9 +415,13 @@ $$ \Delta\vec{A} - \frac{1}{v^2} \frac{\partial^2\vec{A}}{\partial t^2} = -\mu\m
 
 Решениями волновых уравнений для потенциалов в неограниченном пространстве при условии затухания полей на бесконечности являются **запаздывающие потенциалы**:
 
-$$ \varphi(\vec{r}, t) = \frac{1}{4\pi\varepsilon\varepsilon_0} \int_V \frac{\rho\left(\vec{r}', t - \frac{|\vec{r} - \vec{r}'|}{v}\right)}{|\vec{r} - \vec{r}'|} \mathrm{d}V' $$
+$$
+\varphi(\vec{r}, t) = \frac{1}{4\pi\varepsilon\varepsilon_0} \int_V \frac{\rho\left(\vec{r}', t - \frac{|\vec{r} - \vec{r}'|}{v}\right)}{|\vec{r} - \vec{r}'|} \mathrm{d}V'
+$$
 
-$$ \vec{A}(\vec{r}, t) = \frac{\mu\mu_0}{4\pi} \int_V \frac{\vec{j}\left(\vec{r}', t - \frac{|\vec{r} - \vec{r}'|}{v}\right)}{|\vec{r} - \vec{r}'|} \mathrm{d}V' $$
+$$
+\vec{A}(\vec{r}, t) = \frac{\mu\mu_0}{4\pi} \int_V \frac{\vec{j}\left(\vec{r}', t - \frac{|\vec{r} - \vec{r}'|}{v}\right)}{|\vec{r} - \vec{r}'|} \mathrm{d}V'
+$$
 
 Запаздывающий аргумент времени $t_{\text{ret}} = t - |\vec{r} - \vec{r}'|/v$ физически означает, что электромагнитное возмущение от источника, расположенного в точке $\vec{r}'$, доходит до точки наблюдения $\vec{r}$ за конечное время, определяемое скоростью распространения сигнала $v$.
 
@@ -347,9 +431,13 @@ $$ \vec{A}(\vec{r}, t) = \frac{\mu\mu_0}{4\pi} \int_V \frac{\vec{j}\left(\vec{r}
 
 Рассмотрим электронейтральную систему зарядов, сосредоточенную в малой области пространства с характерным размером $d$. На расстояниях от системы $r \gg d$ потенциалы поля во втором порядке приближения (дипольное приближение) представляются в виде:
 
-$$ \varphi(\vec{r}, t) \approx \frac{(\vec{p}(t_{\text{ret}}), \vec{n})}{4\pi\varepsilon_0 r^2} + \frac{(\dot{\vec{p}}(t_{\text{ret}}), \vec{n})}{4\pi\varepsilon_0 c r} $$
+$$
+\varphi(\vec{r}, t) \approx \frac{(\vec{p}(t_{\text{ret}}), \vec{n})}{4\pi\varepsilon_0 r^2} + \frac{(\dot{\vec{p}}(t_{\text{ret}}), \vec{n})}{4\pi\varepsilon_0 c r}
+$$
 
-$$ \vec{A}(\vec{r}, t) \approx \frac{\mu_0 \dot{\vec{p}}(t_{\text{ret}})}{4\pi r} $$
+$$
+\vec{A}(\vec{r}, t) \approx \frac{\mu_0 \dot{\vec{p}}(t_{\text{ret}})}{4\pi r}
+$$
 
 где $t_{\text{ret}} = t - r/c$ — запаздывающее время, отсчитанное от центра системы, а $\vec{n} = \vec{r}/r$ — единичный вектор направления на точку наблюдения.
 
@@ -360,9 +448,13 @@ $$ \vec{A}(\vec{r}, t) \approx \frac{\mu_0 \dot{\vec{p}}(t_{\text{ret}})}{4\pi r
 На больших расстояниях от излучающей системы зарядов (в волновой зоне, где $r \gg d$ и $r \gg \lambda$) основной вклад в электромагнитное поле вносят члены, убывающие с расстоянием обратно пропорционально первой степени $1/r$ (поля излучения).
 Используя потенциалы дипольного приближения, находим:
 
-$$ \vec{B}(\vec{r}, t) = \frac{\mu_0}{4\pi c r} [\ddot{\vec{p}}(t_{\text{ret}}), \vec{n}] $$
+$$
+\vec{B}(\vec{r}, t) = \frac{\mu_0}{4\pi c r} [\ddot{\vec{p}}(t_{\text{ret}}), \vec{n}]
+$$
 
-$$ \vec{E}(\vec{r}, t) = c [\vec{B}(\vec{r}, t), \vec{n}] = \frac{\mu_0}{4\pi r} [[\ddot{\vec{p}}(t_{\text{ret}}), \vec{n}], \vec{n}] $$
+$$
+\vec{E}(\vec{r}, t) = c [\vec{B}(\vec{r}, t), \vec{n}] = \frac{\mu_0}{4\pi r} [[\ddot{\vec{p}}(t_{\text{ret}}), \vec{n}], \vec{n}]
+$$
 
 где $\ddot{\vec{p}}$ — вторая производная по времени от электрического дипольного момента системы, вычисленная в запаздывающий момент времени $t_{\text{ret}} = t - r/c$.
 
@@ -373,9 +465,13 @@ $$ \vec{E}(\vec{r}, t) = c [\vec{B}(\vec{r}, t), \vec{n}] = \frac{\mu_0}{4\pi r}
 Пусть дипольный момент системы совершает гармонические колебания с частотой $\omega$: $\vec{p}(t) = \vec{p}_0 \cos(\omega t)$. Тогда вторая производная равна $\ddot{\vec{p}}(t) = -\omega^2 \vec{p}_0 \cos(\omega t)$.
 Подставляя это выражение в поля волновой зоны, получаем:
 
-$$ \vec{B}(\vec{r}, t) = -\frac{\mu_0 \omega^2}{4\pi c r} [\vec{p}_0, \vec{n}] \cos(\omega(t - r/c)) $$
+$$
+\vec{B}(\vec{r}, t) = -\frac{\mu_0 \omega^2}{4\pi c r} [\vec{p}_0, \vec{n}] \cos(\omega(t - r/c))
+$$
 
-$$ \vec{E}(\vec{r}, t) = -\frac{\mu_0 \omega^2}{4\pi r} [[\vec{p}_0, \vec{n}], \vec{n}] \cos(\omega(t - r/c)) $$
+$$
+\vec{E}(\vec{r}, t) = -\frac{\mu_0 \omega^2}{4\pi r} [[\vec{p}_0, \vec{n}], \vec{n}] \cos(\omega(t - r/c))
+$$
 
 Поля представляют собой расходящуюся сферическую поперечную электромагнитную волну.
 
@@ -385,12 +481,16 @@ $$ \vec{E}(\vec{r}, t) = -\frac{\mu_0 \omega^2}{4\pi r} [[\vec{p}_0, \vec{n}], \
 
 Интегрируя поток вектора Умова-Пойнтинга по сфере большого радиуса в волновой зоне, получаем формулу Лармора для мгновенной мощности излучения диполя:
 
-$$ P(t) = \frac{\mu_0 \ddot{p}^2(t_{\text{ret}})}{6\pi c} $$
+$$
+P(t) = \frac{\mu_0 \ddot{p}^2(t_{\text{ret}})}{6\pi c}
+$$
 
 Для гармонического закона изменения дипольного момента среднее значение квадрата второй производной равно $\langle \ddot{p}^2 \rangle = \frac{1}{2} \omega^4 p_0^2$.
 Тогда средняя мощность излучения диполя за период колебаний равна:
 
-$$ \langle P \rangle = \frac{\mu_0 \omega^4 p_0^2}{12\pi c} $$
+$$
+\langle P \rangle = \frac{\mu_0 \omega^4 p_0^2}{12\pi c}
+$$
 
 Мощность излучения резко возрастает с увеличением частоты колебаний (пропорционально четвертой степени частоты).
 
@@ -402,10 +502,14 @@ $$ \langle P \rangle = \frac{\mu_0 \omega^4 p_0^2}{12\pi c} $$
 
 > Вектор объемной плотности импульса электромагнитного поля $\vec{g}$ выражается через вектор плотности потока энергии (вектор Умова-Пойнтинга) $\vec{S}$:
 
-$$ \vec{g} = \frac{\vec{S}}{c^2} = \frac{[\vec{E}, \vec{H}]}{c^2} $$
+$$
+\vec{g} = \frac{\vec{S}}{c^2} = \frac{[\vec{E}, \vec{H}]}{c^2}
+$$
 
 Для вакуума в СИ:
 
-$$ \vec{g} = \varepsilon_0 [\vec{E}, \vec{B}] $$
+$$
+\vec{g} = \varepsilon_0 [\vec{E}, \vec{B}]
+$$
 
 Наличие импульса поля подтверждается явлением давления электромагнитного излучения на поглощающие и отражающие поверхности.

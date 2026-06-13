@@ -10,14 +10,32 @@ date: 2026-06-13
 ### Важнейшие тождества векторного анализа
 В задачах на преобразование полей часто требуются следующие тождества:
 - **Произведение скаляра на вектор**:
-  $$ \operatorname{div}(\phi \vec{A}) = \phi \operatorname{div}\vec{A} + (\vec{A}, \operatorname{grad}\phi) $$
-  $$ \operatorname{rot}(\phi \vec{A}) = \phi \operatorname{rot}\vec{A} + [\operatorname{grad}\phi, \vec{A}] $$
+
+$$
+\operatorname{div}(\phi \vec{A}) = \phi \operatorname{div}\vec{A} + (\vec{A}, \operatorname{grad}\phi)
+$$
+
+$$
+\operatorname{rot}(\phi \vec{A}) = \phi \operatorname{rot}\vec{A} + [\operatorname{grad}\phi, \vec{A}]
+$$
+
 - **Дивергенция векторного произведения**:
-  $$ \operatorname{div}[\vec{A}, \vec{B}] = (\vec{B}, \operatorname{rot}\vec{A}) - (\vec{A}, \operatorname{rot}\vec{B}) $$
+
+$$
+\operatorname{div}[\vec{A}, \vec{B}] = (\vec{B}, \operatorname{rot}\vec{A}) - (\vec{A}, \operatorname{rot}\vec{B})
+$$
+
 - **Ротор ротора (Двойной ротор)**:
-  $$ \operatorname{rot}\operatorname{rot}\vec{A} = \operatorname{grad}\operatorname{div}\vec{A} - \Delta\vec{A} $$
+
+$$
+\operatorname{rot}\operatorname{rot}\vec{A} = \operatorname{grad}\operatorname{div}\vec{A} - \Delta\vec{A}
+$$
+
 - **Тождества с нулем**:
-  $$ \operatorname{rot}\operatorname{grad}\phi \equiv 0, \quad \operatorname{div}\operatorname{rot}\vec{A} \equiv 0 $$
+
+$$
+\operatorname{rot}\operatorname{grad}\phi \equiv 0, \quad \operatorname{div}\operatorname{rot}\vec{A} \equiv 0
+$$
 
 ### Дифференциальные операторы в криволинейных координатах
 Если поле обладает радиальной симметрией (сферической или цилиндрической), покомпонентный декартов градиент использовать неудобно.
@@ -34,9 +52,16 @@ date: 2026-06-13
 
 ### Полезные интегралы для решения задач
 - **Вычисление полей дисков/витков на оси**:
-  $$ \int \frac{x \, \mathrm{d}x}{(x^2 + a^2)^{3/2}} = -\frac{1}{\sqrt{x^2 + a^2}} $$
+
+$$
+\int \frac{x \, \mathrm{d}x}{(x^2 + a^2)^{3/2}} = -\frac{1}{\sqrt{x^2 + a^2}}
+$$
+
 - **Разложение потенциалов (мультипольное)**:
-  $$ \frac{1}{|\vec{r} - \vec{a}|} \approx \frac{1}{r} + \frac{(\vec{a}, \vec{r})}{r^3} \quad (r \gg a) $$
+
+$$
+\frac{1}{|\vec{r} - \vec{a}|} \approx \frac{1}{r} + \frac{(\vec{a}, \vec{r})}{r^3} \quad (r \gg a)
+$$
 
 ---
 
@@ -49,9 +74,17 @@ date: 2026-06-13
 
 1. **Замена**: Проводящая плоскость убирается. В зеркальной точке на расстоянии $-d$ вводится заряд-изображение $q' = -q$.
 2. **Потенциал в области $z > 0$**:
-   $$ \varphi(\vec{r}) = \frac{q}{4\pi\varepsilon_0} \left( \frac{1}{|\vec{r} - d\vec{e}_z|} - \frac{1}{|\vec{r} + d\vec{e}_z|} \right) $$
+
+$$
+\varphi(\vec{r}) = \frac{q}{4\pi\varepsilon_0} \left( \frac{1}{|\vec{r} - d\vec{e}_z|} - \frac{1}{|\vec{r} + d\vec{e}_z|} \right)
+$$
+
 3. **Плотность индуцированного заряда на плоскости**:
-   $$ \sigma(x, y) = -\left.\varepsilon_0 \frac{\partial \varphi}{\partial z}\right|_{z=0} = -\frac{q d}{2\pi (x^2 + y^2 + d^2)^{3/2}} $$
+
+$$
+\sigma(x, y) = -\left.\varepsilon_0 \frac{\partial \varphi}{\partial z}\right|_{z=0} = -\frac{q d}{2\pi (x^2 + y^2 + d^2)^{3/2}}
+$$
+
 4. **Полный индуцированный заряд**: $Q_{\text{индуц}} = \int \sigma \, \mathrm{d}S = -q$.
 5. **Сила притяжения заряда к плоскости**: $F = \frac{q^2}{4\pi\varepsilon_0 (2d)^2}$.
 
@@ -59,9 +92,17 @@ date: 2026-06-13
 Заряд $q$ расположен на расстоянии $d$ от центра проводящей сферы радиуса $R$ ($d > R$).
 
 1. **Замена**: Сфера убирается. Мнимый заряд-изображение $q'$ помещается внутрь сферы на расстоянии $d'$ от центра вдоль линии, соединяющей центр сферы и реальный заряд:
-   $$ q' = -q\frac{R}{d}, \quad d' = \frac{R^2}{d} $$
+
+$$
+q' = -q\frac{R}{d}, \quad d' = \frac{R^2}{d}
+$$
+
 2. **Потенциал вне сферы ($r \ge R$)**:
-   $$ \varphi(\vec{r}) = \frac{1}{4\pi\varepsilon_0} \left( \frac{q}{|\vec{r} - d\vec{e}_z|} + \frac{q'}{|\vec{r} - d'\vec{e}_z|} \right) $$
+
+$$
+\varphi(\vec{r}) = \frac{1}{4\pi\varepsilon_0} \left( \frac{q}{|\vec{r} - d\vec{e}_z|} + \frac{q'}{|\vec{r} - d'\vec{e}_z|} \right)
+$$
+
 3. **Если сфера изолирована и незаряжена**:
    Для сохранения полного заряда сферы $Q_{\text{сфер}} = 0$ в центр сферы помещается дополнительный мнимый заряд $q'' = -q' = q\frac{R}{d}$.
 
@@ -72,7 +113,9 @@ date: 2026-06-13
 ### Общий вид дифференциального уравнения (второго порядка)
 Уравнения для колебательных процессов сводятся к виду:
 
-$$ \ddot{x} + 2\beta\dot{x} + \omega_0^2 x = f(t) $$
+$$
+\ddot{x} + 2\beta\dot{x} + \omega_0^2 x = f(t)
+$$
 
 ### Переходные процессы ($RC$- и $RL$-цепи)
 Сводятся к дифференциальным уравнениям первого порядка:
@@ -83,27 +126,60 @@ $$ \ddot{x} + 2\beta\dot{x} + \omega_0^2 x = f(t) $$
 | **$RL$-цепь** | $L\dot{I} + I R = \mathcal{E}$ | $\tau = \frac{L}{R}$ | $I(t) = \frac{E}{R}\left(1 - e^{-t/\tau}\right)$ |
 
 ### Собственные колебания в $LC$-контуре ($R = 0$)
-$$ \ddot{q} + \omega_0^2 q = 0 \implies \omega_0 = \frac{1}{\sqrt{L C}} $$
-$$ q(t) = q_0 \cos(\omega_0 t + \alpha) $$
+
+$$
+\ddot{q} + \omega_0^2 q = 0 \implies \omega_0 = \frac{1}{\sqrt{L C}}
+$$
+
+$$
+q(t) = q_0 \cos(\omega_0 t + \alpha)
+$$
+
 - Амплитуда $q_0$ и начальная фаза $\alpha$ находятся из $q(0)$ и $I(0) = \dot{q}(0)$.
 
 ### Затухающие колебания в $RLC$-контуре
-$$ \ddot{q} + 2\beta\dot{q} + \omega_0^2 q = 0, \quad \beta = \frac{R}{2L}, \quad \omega_0 = \frac{1}{\sqrt{LC}} $$
+
+$$
+\ddot{q} + 2\beta\dot{q} + \omega_0^2 q = 0, \quad \beta = \frac{R}{2L}, \quad \omega_0 = \frac{1}{\sqrt{LC}}
+$$
 
 - **Случай малого затухания ($\beta < \omega_0$)**:
-  $$ q(t) = q_0 e^{-\beta t} \cos(\omega t + \alpha), \quad \omega = \sqrt{\omega_0^2 - \beta^2} $$
+
+$$
+q(t) = q_0 e^{-\beta t} \cos(\omega t + \alpha), \quad \omega = \sqrt{\omega_0^2 - \beta^2}
+$$
+
 - **Апериодический разряд ($\beta > \omega_0$)**:
-  $$ q(t) = C_1 e^{\lambda_1 t} + C_2 e^{\lambda_2 t}, \quad \lambda_{1,2} = -\beta \pm \sqrt{\beta^2 - \omega_0^2} $$
+
+$$
+q(t) = C_1 e^{\lambda_1 t} + C_2 e^{\lambda_2 t}, \quad \lambda_{1,2} = -\beta \pm \sqrt{\beta^2 - \omega_0^2}
+$$
+
 - **Критический апериодический разряд ($\beta = \omega_0$)**:
-  $$ q(t) = (C_1 + C_2 t) e^{-\beta t} $$
+
+$$
+q(t) = (C_1 + C_2 t) e^{-\beta t}
+$$
 
 ### Вынужденные колебания в $RLC$-контуре под внешней ЭДС $U(t) = U_0 \cos(\Omega t)$
-$$ L\ddot{q} + R\dot{q} + \frac{q}{C} = U_0 \cos(\Omega t) $$
+
+$$
+L\ddot{q} + R\dot{q} + \frac{q}{C} = U_0 \cos(\Omega t)
+$$
+
 - Вынужденный ток: $I(t) = I_0 \cos(\Omega t - \varphi)$
 - Амплитуда тока:
-  $$ I_0(\Omega) = \frac{U_0}{\sqrt{R^2 + \left( \Omega L - \frac{1}{\Omega C} \right)^2}} $$
+
+$$
+I_0(\Omega) = \frac{U_0}{\sqrt{R^2 + \left( \Omega L - \frac{1}{\Omega C} \right)^2}}
+$$
+
 - Сдвиг фаз (ток отстает от напряжения):
-  $$ \tan\varphi = \frac{\Omega L - \frac{1}{\Omega C}}{R} $$
+
+$$
+\tan\varphi = \frac{\Omega L - \frac{1}{\Omega C}}{R}
+$$
+
 - Резонансная частота тока: $\Omega_{\text{рез}} = \omega_0 = 1/\sqrt{LC}$.
 
 ---
@@ -113,17 +189,25 @@ $$ L\ddot{q} + R\dot{q} + \frac{q}{C} = U_0 \cos(\Omega t) $$
 Применяется для анализа установившихся гармонических колебаний.
 
 ### Представление величин
-$$ I(t) = \operatorname{Re}\left\{ \hat{I} e^{i\omega t} \right\}, \quad U(t) = \operatorname{Re}\left\{ \hat{U} e^{i\omega t} \right\} $$
+
+$$
+I(t) = \operatorname{Re}\left\{ \hat{I} e^{i\omega t} \right\}, \quad U(t) = \operatorname{Re}\left\{ \hat{U} e^{i\omega t} \right\}
+$$
 
 ### Комплексные импедансы ($Z$)
 Закон Ома принимает вид $\hat{U} = Z \hat{I}$:
 
-$$ Z_R = R, \quad Z_L = i\omega L, \quad Z_C = \frac{1}{i\omega C} = -\frac{i}{\omega C} $$
+$$
+Z_R = R, \quad Z_L = i\omega L, \quad Z_C = \frac{1}{i\omega C} = -\frac{i}{\omega C}
+$$
 
 При последовательном соединении импедансы складываются: $Z = \sum Z_i$. При параллельном складываются проводимости: $\frac{1}{Z} = \sum \frac{1}{Z_i}$.
 
 ### Средняя тепловая мощность
-$$ P = \frac{1}{2} \operatorname{Re}\left\{ \hat{U} \hat{I}^* \right\} = I_{\text{эф}} U_{\text{эф}} \cos\varphi $$
+
+$$
+P = \frac{1}{2} \operatorname{Re}\left\{ \hat{U} \hat{I}^* \right\} = I_{\text{эф}} U_{\text{эф}} \cos\varphi
+$$
 
 ---
 
@@ -132,34 +216,62 @@ $$ P = \frac{1}{2} \operatorname{Re}\left\{ \hat{U} \hat{I}^* \right\} = I_{\tex
 ### Граничные условия для диэлектриков и магнетиков
 На границе раздела двух сред без свободных зарядов и токов:
 
-$$ D_{1n} = D_{2n} \implies \varepsilon_1 E_{1n} = \varepsilon_2 E_{2n} $$
-$$ E_{1\tau} = E_{2\tau} $$
+$$
+D_{1n} = D_{2n} \implies \varepsilon_1 E_{1n} = \varepsilon_2 E_{2n}
+$$
+
+$$
+E_{1\tau} = E_{2\tau}
+$$
 
 - **Закон преломления линий электрической индукции**:
-  $$ \frac{\tan\theta_1}{\tan\theta_2} = \frac{\varepsilon_1}{\varepsilon_2} $$
-  где $\theta$ — угол между вектором $\vec{E}$ и нормалью к границе раздела.
+
+$$
+\frac{\tan\theta_1}{\tan\theta_2} = \frac{\varepsilon_1}{\varepsilon_2}
+$$
+
+где $\theta$ — угол между вектором $\vec{E}$ и нормалью к границе раздела.
 
 - **Закон преломления линий магнитной индукции**:
-  $$ \frac{\tan\theta_1}{\tan\theta_2} = \frac{\mu_1}{\mu_2} $$
-  где $\theta$ — угол между вектором $\vec{B}$ и нормалью к границе раздела.
+
+$$
+\frac{\tan\theta_1}{\tan\theta_2} = \frac{\mu_1}{\mu_2}
+$$
+
+где $\theta$ — угол между вектором $\vec{B}$ и нормалью к границе раздела.
 
 ### Расчет емкости и индукции кабелей
 - **Коаксиальный кабель** (внутренний радиус $R_1$, внешний $R_2$, длина $l$):
   - Поле внутри ($R_1 < r < R_2$): $E(r) = \frac{\tau}{2\pi\varepsilon\varepsilon_0 r}$, где $\tau$ — погонный заряд.
   - Разность потенциалов: $U = \frac{\tau}{2\pi\varepsilon\varepsilon_0} \ln\frac{R_2}{R_1}$.
   - Емкость на единицу длины:
-    $$ C_1 = \frac{2\pi\varepsilon\varepsilon_0}{\ln(R_2/R_1)} $$
-  - Индуктивность на единицу длины (с учетом соленоидального поля $B(r) = \frac{\mu\mu_0 I}{2\pi r}$):
-    $$ L_1 = \frac{\mu\mu_0}{2\pi} \ln\frac{R_2}{R_1} $$
-  - Полезная связь для однородной среды:
-    $$ L_1 C_1 = \varepsilon\mu \varepsilon_0\mu_0 = \frac{1}{v^2} $$
+
+$$
+C_1 = \frac{2\pi\varepsilon\varepsilon_0}{\ln(R_2/R_1)}
+$$
+
+- Индуктивность на единицу длины (с учетом соленоидального поля $B(r) = \frac{\mu\mu_0 I}{2\pi r}$):
+
+$$
+L_1 = \frac{\mu\mu_0}{2\pi} \ln\frac{R_2}{R_1}
+$$
+
+- Полезная связь для однородной среды:
+
+$$
+L_1 C_1 = \varepsilon\mu \varepsilon_0\mu_0 = \frac{1}{v^2}
+$$
 
 ### Давление электромагнитной волны
 При падении плоской волны на поверхность:
 - Плотность импульса волны в вакууме: $\vec{g} = \vec{S}/c^2$.
 - Среднее давление излучения $p$:
-  $$ p = (1 + R) \langle w \rangle = (1 + R) \frac{\langle S \rangle}{c} $$
-  где $R$ — коэффициент отражения поверхности по энергии:
+
+$$
+p = (1 + R) \langle w \rangle = (1 + R) \frac{\langle S \rangle}{c}
+$$
+
+где $R$ — коэффициент отражения поверхности по энергии:
   - При полном поглощении ($R = 0$): $p = \langle w \rangle = \frac{\langle S \rangle}{c}$.
   - При полном отражении ($R = 1$): $p = 2\langle w \rangle = \frac{2\langle S \rangle}{c}$.
 
@@ -167,5 +279,9 @@ $$ E_{1\tau} = E_{2\tau} $$
 Приближение хорошего проводника ($\sigma \gg \omega\varepsilon$).
 - Уравнение затухания поля по глубине $z$: $E(z) = E_0 e^{-z/\delta}$.
 - Толщина скин-слоя:
-  $$ \delta = \sqrt{\frac{2}{\omega\sigma\mu\mu_0}} = \frac{1}{\sqrt{\pi \nu \sigma \mu \mu_0}} \quad (\omega = 2\pi\nu) $$
+
+$$
+\delta = \sqrt{\frac{2}{\omega\sigma\mu\mu_0}} = \frac{1}{\sqrt{\pi \nu \sigma \mu \mu_0}} \quad (\omega = 2\pi\nu)
+$$
+
 - При высоких частотах ($\nu \to \infty$) ток течет полностью по тонкой внешней оболочке проводника, активное сопротивление резко возрастает: $R \approx \frac{l}{\sigma S_{\text{эф}}}$, где $S_{\text{эф}} \approx P \delta$ ($P$ — периметр сечения проводника).
