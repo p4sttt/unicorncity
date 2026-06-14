@@ -115,12 +115,29 @@ $$
 $$
 
 ### Дивергенция магнитного поля (Соленоидальность)
+
 $$
-\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi} \int_V \frac{[\vec{j}(\vec{r}'), \vec{r} - \vec{r}']}{|\vec{r} - \vec{r}'|^3} \mathrm{d}V' = \frac{\mu_0}{4\pi} \operatorname{rot} \int_V \frac{\vec{j}(\vec{r}')}{|\vec{r} - \vec{r}'|} \mathrm{d}V'
+\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi} \int_V \frac{[\vec{j}(\vec{r}'), \vec{r} - \vec{r}']}{|\vec{r} - \vec{r}'|^3} \mathrm{d}V'
 $$
 
 $$
-\operatorname{div}\vec{B} = \operatorname{div}\operatorname{rot}\vec{A} \equiv 0
+\operatorname{div}\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi} \int_V \operatorname{div}_{\vec{r}} \left( \frac{[\vec{j}(\vec{r}'), \vec{r} - \vec{r}']}{|\vec{r} - \vec{r}'|^3} \right) \mathrm{d}V'
+$$
+
+$$
+\text{Используя тождество } \operatorname{div}[\vec{F}, \vec{G}] = (\vec{G}, \operatorname{rot}\vec{F}) - (\vec{F}, \operatorname{rot}\vec{G}) \text{ для } \vec{F} = \vec{j}(\vec{r}') \text{ и } \vec{G} = \frac{\vec{r} - \vec{r}'}{|\vec{r} - \vec{r}'|^3}:
+$$
+
+$$
+\operatorname{div}_{\vec{r}} \left( \left[\vec{j}(\vec{r}'), \frac{\vec{r} - \vec{r}'}{|\vec{r} - \vec{r}'|^3}\right] \right) = -\left( \vec{j}(\vec{r}'), \operatorname{rot}_{\vec{r}}\left(\frac{\vec{r} - \vec{r}'}{|\vec{r} - \vec{r}'|^3}\right) \right)
+$$
+
+$$
+\text{Так как } \frac{\vec{r} - \vec{r}'}{|\vec{r} - \vec{r}'|^3} = -\nabla_{\vec{r}}\left(\frac{1}{|\vec{r} - \vec{r}'|}\right) \text{ и ротор градиента тождественно равен нулю:}
+$$
+
+$$
+\operatorname{rot}_{\vec{r}}\left(\frac{\vec{r} - \vec{r}'}{|\vec{r} - \vec{r}'|^3}\right) = -\operatorname{rot}_{\vec{r}}\operatorname{grad}_{\vec{r}}\left(\frac{1}{|\vec{r} - \vec{r}'|}\right) = 0
 $$
 
 $$
