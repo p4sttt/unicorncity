@@ -48,3 +48,4 @@
 {"timestamp":"2026-06-13T22:24:56Z","action":"updated","kind":"note","path":"physics/electrodynamics/part_1.md","title":"Электростатика, магнитостатика и постоянный ток","topic":"Электродинамика","source":"pre-commit"}
 {"timestamp":"2026-06-13T22:24:56Z","action":"updated","kind":"note","path":"physics/electrodynamics/part_2.md","title":"Электродинамика, уравнения Максвелла и излучение","topic":"Электродинамика","source":"pre-commit"}
 {"timestamp":"2026-06-13T22:24:56Z","action":"updated","kind":"note","path":"physics/electrodynamics/part_3.md","title":"Квазистационарные процессы, переменный ток и СТО","topic":"Электродинамика","source":"pre-commit"}
+{"timestamp":"2026-06-14T13:29:17Z","action":"updated","kind":"note","path":"physics/electrodynamics/formula_checklist.md","title":"Чеклист формул по электродинамике","topic":"Электродинамика","source":"pre-commit"}
