@@ -23,6 +23,11 @@ status: done
 
      $$\mathbb{P}\left(\sum_{n=1}^{\infty} A_n\right) = \sum_{n=1}^{\infty} \mathbb{P}(A_n)$$
 
+### Теорема Каратеодори о продолжении меры
+**Теорема Каратеодори:** Пусть $\mathcal{A}_0$ — алгебра подмножеств $\Omega$. Пусть $\mathbb{P}_0$ — $\sigma$-аддитивная вероятностная мера на $\mathcal{A}_0$. Тогда существует единственная вероятностная мера $\mathbb{P}$ на $\sigma$-алгебре $\mathcal{F} = \sigma(\mathcal{A}_0)$ такая, что:
+
+$$\mathbb{P}(A) = \mathbb{P}_0(A), \quad \forall A \in \mathcal{A}_0$$
+
 ### Непрерывность вероятностной меры
 **Теорема о непрерывности вероятности:**
 1. Если $A_n \uparrow A$ ($A_1 \subset A_2 \subset \dots$ и $A = \bigcup_{n=1}^{\infty} A_n$), то $\lim_{n\to\infty} \mathbb{P}(A_n) = \mathbb{P}(A)$.
@@ -186,6 +191,13 @@ $$\operatorname{Cov}(X, Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])],
 $$\mathbb{E}[(tU+V)^2] = t^2 \mathbb{D}[X] + 2t \operatorname{Cov}(X, Y) + \mathbb{D}[Y] \ge 0 \implies D/4 = (\operatorname{Cov}(X, Y))^2 - \mathbb{D}[X]\mathbb{D}[Y] \le 0 \implies |\rho| \le 1$$
 
 Если $|\rho| = 1$, то $D = 0 \implies \mathbb{E}[(t_0 U + V)^2] = 0 \implies t_0 U + V = 0$ п.н. $\implies Y = aX + b$ п.н. $\blacksquare$
+
+### Теорема Радона-Никодима
+**Теорема Радона-Никодима:** Пусть $\lambda$ — $\sigma$-конечная мера на $(\Omega, \mathcal{F})$, а $\mu$ — $\sigma$-конечная подписанная мера на $(\Omega, \mathcal{F})$. Если $\mu$ абсолютно непрерывна относительно $\lambda$ ($\mu \ll \lambda$, то есть $\lambda(A) = 0 \implies \mu(A) = 0$), то существует единственная (с точностью до эквивалентности $\lambda$-п.н.) $\mathcal{F}$-измеримая функция $f: \Omega \to \mathbb{R}$ такая, что для любого $A \in \mathcal{F}$:
+
+$$\mu(A) = \int_{A} f(\omega) \, d\lambda(\omega)$$
+
+Функция $f$ называется производной Радона-Никодима и обозначается $\frac{d\mu}{d\lambda}$. Если $\mu$ неотрицательна, то $f \ge 0$ $\lambda$-п.н.
 
 ### Условное математическое ожидание
 **Условное математическое ожидание** $\mathbb{E}[X \mid \mathcal{G}]$ относительно $\mathcal{G} \subset \mathcal{F}$ — $\mathcal{G}$-измеримая случайная величина, удовлетворяющая:
