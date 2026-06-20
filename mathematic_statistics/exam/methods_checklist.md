@@ -7,194 +7,121 @@ date: 2026-06-20
 
 # Чеклист по методам решения задач
 
-Этот чеклист содержит разбор основных практических методов решения задач по математической статистике. Каждый метод изложен в виде пошагового алгоритма и проиллюстрирован решением конкретной задачи в духе классического задачника Г. И. Ивченко и Ю. И. Медведева («Введение в математическую статистику»).
-
----
-
 ## 1. Метод 1: Нахождение распределения порядковых статистик
 
-Используется для нахождения плотностей распределения крайних и промежуточных членов вариационного ряда $X_{(1)} \le \dots \le X_{(n)}$, полученного по выборке из абсолютно непрерывного распределения с плотностью $p(x)$ и функцией распределения $F(x)$.
-
 ### Алгоритм
-1. **Для максимума $X_{(n)}$ (максимальной порядковой статистики):**
-   - Найти функцию распределения:
-     $$F_{X_{(n)}}(x) = \mathbb{P}(X_{(n)} < x) = \mathbb{P}(X_1 < x, \dots, X_n < x) = \prod_{i=1}^{n} \mathbb{P}(X_i < x) = (F(x))^n$$
-   - Найти плотность распределения путем дифференцирования:
-     $$p_{X_{(n)}}(x) = \frac{\mathrm{d}}{\mathrm{d}x} (F(x))^n = n (F(x))^{n-1} p(x)$$
-2. **Для минимума $X_{(1)}$ (минимальной порядковой статистики):**
-   - Найти вероятность противоположного события:
-     $$\mathbb{P}(X_{(1)} \ge x) = \mathbb{P}(X_1 \ge x, \dots, X_n \ge x) = \prod_{i=1}^{n} \mathbb{P}(X_i \ge x) = (1 - F(x))^n$$
-   - Найти функцию распределения:
-     $$F_{X_{(1)}}(x) = 1 - (1 - F(x))^n$$
-   - Найти плотность распределения путем дифференцирования:
-     $$p_{X_{(1)}}(x) = \frac{\mathrm{d}}{\mathrm{d}x} \left( 1 - (1 - F(x))^n \right) = n (1 - F(x))^{n-1} p(x)$$
+1. **Максимум $X_{(n)}$:**
+   $$F_{X_{(n)}}(x) = (F(x))^n \implies p_{X_{(n)}}(x) = n (F(x))^{n-1} p(x)$$
+2. **Минимум $X_{(1)}$:**
+   $$F_{X_{(1)}}(x) = 1 - (1 - F(x))^n \implies p_{X_{(1)}}(x) = n (1 - F(x))^{n-1} p(x)$$
 
-### Пример разбора задачи (Ивченко, Медведев)
-> **Задача**
->
-> Пусть $X_1, \dots, X_n$ — выборка из показательного распределения с параметром $\theta > 0$. Найти плотность распределения минимума выборки $X_{(1)}$ и исследовать его математическое ожидание.
+### Пример разбора
+Пусть $X_1, \dots, X_n \sim \operatorname{Exp}(\theta)$ независимы: $p(x) = \theta e^{-\theta x}\mathbb{I}(x \ge 0), F(x) = (1 - e^{-\theta x})\mathbb{I}(x \ge 0)$. Найти плотность распределения $X_{(1)}$ и $\mathbb{E}[X_{(1)}]$.
 
 **Решение:**
-1. Плотность и функция распределения исходной величины равны соответственно:
-   $$p(x) = \theta e^{-\theta x}\mathbb{I}(x \ge 0), \quad F(x) = (1 - e^{-\theta x})\mathbb{I}(x \ge 0)$$
-2. Применим алгоритм для нахождения плотности $X_{(1)}$. Для $x \ge 0$:
+1. Для $x \ge 0$:
    $$p_{X_{(1)}}(x) = n (1 - F(x))^{n-1} p(x) = n \left(e^{-\theta x}\right)^{n-1} \left(\theta e^{-\theta x}\right) = n \theta e^{-n \theta x}$$
-   Для $x < 0$ плотность равна нулю.
-   Таким образом, минимальная порядковая статистика $X_{(1)}$ имеет показательное распределение с параметром $n\theta$:
-   $$X_{(1)} \sim \operatorname{Exp}(n\theta)$$
-3. Найдем математическое ожидание $X_{(1)}$. По свойствам показательного распределения (см. [distributions_checklist.md](file:///home/d4y2k/docs/uniCORNcity/mathematic_statistics/exam/distributions_checklist.md)):
-   $$\mathbb{E}[X_{(1)}] = \frac{1}{n\theta}$$
-   *Вывод:* С увеличением объема выборки $n$ математическое ожидание минимума стремится к нулю со скоростью $O(1/n)$. $\blacksquare$
+   Для $x < 0$: $p_{X_{(1)}}(x) = 0$.
+2. Следовательно, $X_{(1)} \sim \operatorname{Exp}(n\theta)$.
+3. $\mathbb{E}[X_{(1)}] = \frac{1}{n\theta}$.
+$\blacksquare$
 
 ---
 
 ## 2. Метод 2: Нахождение ОМП и оценка её эффективности
 
-Используется для нахождения точечной оценки максимального правдоподобия (ОМП) параметра $\theta$ и исследования её асимптотических свойств (смещенность, эффективность через нижнюю границу Рао-Крамера).
-
 ### Алгоритм
-1. Составить функцию правдоподобия $L(\mathbf{X}; \theta) = \prod_{i=1}^{n} p(X_i; \theta)$ (для непрерывного случая) или $L(\mathbf{X}; \theta) = \prod_{i=1}^{n} \mathbb{P}(X_i = x_i; \theta)$ (для дискретного).
-2. Прологарифмировать её: $\ln L(\mathbf{X}; \theta) = \sum_{i=1}^{n} \ln p(X_i; \theta)$.
-3. Записать уравнение правдоподобия $\frac{\partial \ln L}{\partial \theta} = 0$ и найти его корень $\hat{\theta}_{ML}$.
-4. Проверить знак второй производной $\frac{\partial^2 \ln L}{\partial \theta^2}$ в точке $\hat{\theta}_{ML}$ (он должен быть отрицательным).
-5. Исследовать оценку на несмещенность, найдя $\mathbb{E}_{\theta}[\hat{\theta}_{ML}]$. При необходимости построить исправленную несмещенную оценку $\hat{\theta}^*$.
-6. Вычислить информацию Фишера выборки $I_n(\theta) = -n \mathbb{E}_{\theta}\left[\frac{\partial^2 \ln p(X_1; \theta)}{\partial \theta^2}\right]$.
-7. Сравнить дисперсию несмещенной оценки $\mathbb{D}_{\theta}[\hat{\theta}^*]$ с нижней границей Рао-Крамера $\frac{1}{I_n(\theta)}$. Если они совпадают, оценка эффективна.
+1. Составить функцию правдоподобия $L(\mathbf{X}; \theta) = \prod_{i=1}^{n} p(X_i; \theta)$.
+2. Записать уравнение правдоподобия $\frac{\partial \ln L}{\partial \theta} = 0$, найти корень $\hat{\theta}_{ML}$.
+3. Проверить знак второй производной $\frac{\partial^2 \ln L}{\partial \theta^2} < 0$.
+4. Найти $\mathbb{E}_{\theta}[\hat{\theta}_{ML}]$. При наличии смещения исправить оценку до несмещенной $\hat{\theta}^*$.
+5. Вычислить информацию Фишера $I_n( \theta) = -n \mathbb{E}_{\theta}\left[\frac{\partial^2 \ln p(X_1; \theta)}{\partial \theta^2}\right]$.
+6. Сравнить $\mathbb{D}_{\theta}[\hat{\theta}^*]$ с границей Рао-Крамера $\frac{1}{I_n(\theta)}$.
 
-### Пример разбора задачи (Ивченко, Медведев)
-> **Задача**
->
-> Пусть $X_1, \dots, X_n$ — выборка из показательного распределения с плотностью $p(x; \theta) = \theta e^{-\theta x}\mathbb{I}(x \ge 0)$. Найти ОМП для параметра $\theta$ и проверить, является ли полученная несмещенная модификация эффективной.
+### Пример разбора
+Пусть $X_1, \dots, X_n \sim \operatorname{Exp}(\theta)$ независимы. Найти ОМП для $\theta$ и проверить эффективность её несмещенной модификации.
 
 **Решение:**
-1. Функция правдоподобия: $L(\mathbf{X}; \theta) = \theta^n e^{-\theta \sum X_i}$.
-2. Логарифм функции правдоподобия: $\ln L(\mathbf{X}; \theta) = n \ln \theta - \theta \sum_{i=1}^{n} X_i$.
-3. Запишем уравнение правдоподобия:
-   $$\frac{\partial \ln L}{\partial \theta} = \frac{n}{\theta} - \sum_{i=1}^{n} X_i = 0 \implies \hat{\theta}_{ML} = \frac{n}{\sum_{i=1}^{n} X_i} = \frac{1}{\bar{X}}$$
-4. Проверим знак второй производной: $\frac{\partial^2 \ln L}{\partial \theta^2} = -\frac{n}{\theta^2} < 0$ (максимум подтвержден).
-5. Исследуем на несмещенность. Обозначим сумму $S_n = \sum_{i=1}^{n} X_i$. Так как $X_i \sim \operatorname{Exp}(\theta) \equiv \operatorname{Gamma}(1, \theta)$, сумма независимых величин распределена как $S_n \sim \operatorname{Gamma}(n, \theta)$ с плотностью $p_{S_n}(s) = \frac{\theta^n}{\Gamma(n)} s^{n-1} e^{-\theta s}$. Вычислим математическое ожидание $\hat{\theta}_{ML} = n/S_n$:
-   $$\mathbb{E}_{\theta}\left[\frac{n}{S_n}\right] = n \int_{0}^{\infty} \frac{1}{s} \frac{\theta^n}{(n-1)!} s^{n-1} e^{-\theta s} \, ds = \frac{n \theta^n}{(n-1)!} \int_{0}^{\infty} s^{n-2} e^{-\theta s} \, ds = \frac{n \theta^n}{(n-1)!} \frac{(n-2)!}{\theta^{n-1}} = \frac{n}{n-1}\theta$$
-   Оценка смещена. Исправленная несмещенная оценка имеет вид:
-   $$\hat{\theta}^* = \frac{n-1}{n} \hat{\theta}_{ML} = \frac{n-1}{\sum_{i=1}^{n} X_i}$$
-6. Вычислим информацию Фишера для одного наблюдения:
-   $$\ln p(X_1; \theta) = \ln \theta - \theta X_1 \implies \frac{\partial^2 \ln p(X_1; \theta)}{\partial \theta^2} = -\frac{1}{\theta^2} \implies I_1(\theta) = \frac{1}{\theta^2} \implies I_n(\theta) = \frac{n}{\theta^2}$$
-   Граница Рао-Крамера для несмещенных оценок равна $\frac{1}{I_n(\theta)} = \frac{\theta^2}{n}$.
-7. Вычислим дисперсию исправленной оценки $\hat{\theta}^*$:
-   $$\mathbb{E}_{\theta}[(\hat{\theta}^*)^2] = (n-1)^2 \mathbb{E}_{\theta}\left[\frac{1}{S_n^2}\right] = (n-1)^2 \int_{0}^{\infty} \frac{1}{s^2} \frac{\theta^n}{(n-1)!} s^{n-1} e^{-\theta s} \, ds = \frac{(n-1)^2 \theta^n}{(n-1)!} \frac{(n-3)!}{\theta^{n-2}} = \frac{(n-1)\theta^2}{n-2}$$
-   $$\mathbb{D}_{\theta}[\hat{\theta}^*] = \mathbb{E}_{\theta}[(\hat{\theta}^*)^2] - (\mathbb{E}_{\theta}[\hat{\theta}^*])^2 = \frac{(n-1)\theta^2}{n-2} - \theta^2 = \frac{\theta^2}{n-2}$$
-   Сравним дисперсию с границей Рао-Крамера:
-   $$\mathbb{D}_{\theta}[\hat{\theta}^*] = \frac{\theta^2}{n-2} > \frac{\theta^2}{n}$$
-   Оценка не является эффективной при конечных $n$, но она **асимптотически эффективна**, так как $\lim_{n\to\infty} \frac{\mathbb{D}_{\theta}[\hat{\theta}^*]}{\theta^2/n} = 1$. $\blacksquare$
+1. $\ln L(\mathbf{X}; \theta) = n \ln \theta - \theta \sum_{i=1}^{n} X_i$.
+2. $\frac{\partial \ln L}{\partial \theta} = \frac{n}{\theta} - \sum_{i=1}^{n} X_i = 0 \implies \hat{\theta}_{ML} = \frac{n}{\sum_{i=1}^{n} X_i} = \frac{1}{\bar{X}}$.
+3. $\frac{\partial^2 \ln L}{\partial \theta^2} = -\frac{n}{\theta^2} < 0$.
+4. Обозначим $S_n = \sum_{i=1}^{n} X_i \sim \operatorname{Gamma}(n, \theta)$ с плотностью $p_{S_n}(s) = \frac{\theta^n}{(n-1)!} s^{n-1} e^{-\theta s}$.
+   $$\mathbb{E}_{\theta}[\hat{\theta}_{ML}] = n \mathbb{E}_{\theta}\left[\frac{1}{S_n}\right] = n \int_{0}^{\infty} \frac{1}{s} \frac{\theta^n}{(n-1)!} s^{n-1} e^{-\theta s} \, ds = \frac{n}{n-1}\theta$$
+   Исправленная несмещенная оценка: $\hat{\theta}^* = \frac{n-1}{\sum_{i=1}^{n} X_i}$.
+5. Информация Фишера: $\ln p(X_1; \theta) = \ln \theta - \theta X_1 \implies \frac{\partial^2 \ln p}{\partial \theta^2} = -\frac{1}{\theta^2} \implies I_n(\theta) = \frac{n}{\theta^2}$.
+   Нижняя граница Рао-Крамера: $\frac{1}{I_n(\theta)} = \frac{\theta^2}{n}$.
+6. Дисперсия $\hat{\theta}^*$:
+   $$\mathbb{E}_{\theta}[(\hat{\theta}^*)^2] = (n-1)^2 \int_{0}^{\infty} \frac{1}{s^2} \frac{\theta^n}{(n-1)!} s^{n-1} e^{-\theta s} \, ds = \frac{(n-1)\theta^2}{n-2} \implies \mathbb{D}_{\theta}[\hat{\theta}^*] = \frac{\theta^2}{n-2}$$
+   Поскольку $\mathbb{D}_{\theta}[\hat{\theta}^*] = \frac{\theta^2}{n-2} > \frac{\theta^2}{n}$, оценка не является эффективной при конечных $n$. Асимптотически эффективна: $\lim_{n\to\infty} \frac{\mathbb{D}_{\theta}[\hat{\theta}^*]}{\theta^2/n} = 1$.
+$\blacksquare$
 
 ---
 
 ## 3. Метод 3: Построение оптимальной несмещенной оценки (ОНУО)
 
-Используется для нахождения уникальной оценки с минимальной дисперсией с помощью полных достаточных статистик (теорема Лемана-Шеффе).
-
 ### Алгоритм
-1. Представить функцию правдоподобия $L(\mathbf{x}; \theta)$ в виде факторизации Неймана-Пирсона с целью нахождения достаточной статистики $T(\mathbf{X})$.
-2. Проверить достаточную статистику $T$ на полноту: из $\mathbb{E}_{\theta}[g(T)] = 0$ для всех $\theta$ должно следовать $g(T) = 0$ п.н.
-3. Если $T$ полна и достаточна, найти функцию $h(T)$ такую, чтобы она была несмещенной: $\mathbb{E}_{\theta}[h(T)] = \theta$.
-4. По теореме Лемана-Шеффе, оценка $\hat{\theta}^* = h(T)$ является единственной оптимальной несмещенной оценкой (ОНУО).
+1. Представить $L(\mathbf{x}; \theta) = g(T(\mathbf{x}); \theta) h(\mathbf{x})$, чтобы найти достаточную статистику $T$.
+2. Проверить $T$ на полноту: $\mathbb{E}_{\theta}[g(T)] = 0 \implies g(T) = 0$ п.н.
+3. Найти $h(T)$ такую, что $\mathbb{E}_{\theta}[h(T)] = \theta$.
+4. По теореме Лемана-Шеффе, $\hat{\theta}^* = h(T)$ — единственная ОНУО.
 
-### Пример разбора задачи (Ивченко, Медведев)
-> **Задача**
->
-> Пусть $X_1, \dots, X_n$ — выборка из равномерного распределения на отрезке $[0, \theta]$. Найти ОНУО для параметра $\theta$.
+### Пример разбора
+Пусть $X_1, \dots, X_n \sim \operatorname{U}([0, \theta])$ независимы. Найти ОНУО для $\theta$.
 
 **Решение:**
-1. Запишем совместную плотность распределения выборки:
-   $$L(\mathbf{x}; \theta) = \prod_{i=1}^{n} \frac{1}{\theta} \mathbb{I}(0 \le x_i \le \theta) = \frac{1}{\theta^n} \mathbb{I}(\max(x_1, \dots, x_n) \le \theta) \mathbb{I}(\min(x_1, \dots, x_n) \ge 0)$$
-   Обозначим $T(\mathbf{X}) = X_{(n)} = \max(X_1, \dots, X_n)$. По теореме факторизации:
-   $$L(\mathbf{x}; \theta) = \left( \frac{1}{\theta^n} \mathbb{I}(X_{(n)} \le \theta) \right) \cdot \mathbb{I}(X_{(1)} \ge 0) \equiv g(T(\mathbf{x}); \theta) \cdot h(\mathbf{x})$$
-   Следовательно, статистика $T = X_{(n)}$ достаточна для $\theta$.
-2. Докажем полноту статистики $T$. Найдем функцию распределения $T$:
-   $$F_T(t) = \mathbb{P}(X_{(n)} < t) = \left(\frac{t}{\theta}\right)^n \mathbb{I}(0 \le t \le \theta) + \mathbb{I}(t > \theta)$$
-   Плотность распределения $T$ равна $p_T(t) = \frac{n t^{n-1}}{\theta^n}\mathbb{I}(0 \le t \le \theta)$.
-   Пусть для некоторой борелевской функции $g$ выполнено:
+1. Совместная плотность:
+   $$L(\mathbf{x}; \theta) = \frac{1}{\theta^n} \mathbb{I}(\max(x_1, \dots, x_n) \le \theta) \mathbb{I}(\min(x_1, \dots, x_n) \ge 0)$$
+   Достаточная статистика: $T = X_{(n)} = \max(X_1, \dots, X_n)$.
+2. Полнота: плотность $T$ есть $p_T(t) = \frac{n t^{n-1}}{\theta^n}\mathbb{I}(0 \le t \le \theta)$.
    $$\mathbb{E}_{\theta}[g(T)] = \int_{0}^{\theta} g(t) \frac{n t^{n-1}}{\theta^n} \, dt = 0 \quad \forall \theta > 0 \implies \int_{0}^{\theta} g(t) t^{n-1} \, dt = 0 \quad \forall \theta > 0$$
-   Дифференцируя интеграл с переменным верхним пределом по $\theta$, получаем:
-   $$g(\theta) \theta^{n-1} = 0 \quad \forall \theta > 0 \implies g(\theta) = 0 \text{ почти всюду}$$
-   Таким образом, статистика $T = X_{(n)}$ является полной достаточной статистикой.
-3. Найдем несмещенную функцию от $T$. Вычислим математическое ожидание $T$:
-   $$\mathbb{E}_{\theta}[T] = \int_{0}^{\theta} t \frac{n t^{n-1}}{\theta^n} \, dt = \frac{n}{\theta^n} \left. \frac{t^{n+1}}{n+1} \right|_0^\theta = \frac{n}{n+1}\theta$$
-   Отсюда следует, что статистика:
-   $$\hat{\theta}^* = \frac{n+1}{n} X_{(n)}$$
-   является несмещенной оценкой для $\theta$.
-4. Так как $\hat{\theta}^*$ является функцией от полной достаточной статистики $T$, по теореме Лемана-Шеффе она является единственной оптимальной несмещенной оценкой (ОНУО). $\blacksquare$
+   Дифференцируя по $\theta$: $g(\theta) \theta^{n-1} = 0 \implies g(\theta) = 0$ п.н. Статистика $T$ полна.
+3. Несмещенность:
+   $$\mathbb{E}_{\theta}[T] = \int_{0}^{\theta} t \frac{n t^{n-1}}{\theta^n} \, dt = \frac{n}{n+1}\theta \implies \mathbb{E}_{\theta}\left[\frac{n+1}{n} T\right] = \theta$$
+4. ОНУО: $\hat{\theta}^* = \frac{n+1}{n} X_{(n)}$.
+$\blacksquare$
 
 ---
 
 ## 4. Метод 4: Построение точного доверительного интервала (pivot-метод)
 
-Используется для построения интервальной оценки параметра $\theta$ с заданным уровнем доверия $1-\alpha$ с помощью центральной статистики.
-
 ### Алгоритм
-1. Предложить центральную статистику $G(\mathbf{X}; \theta)$, распределение которой известно и не зависит от неизвестных параметров модели.
-2. Выбрать квантили $g_{\alpha/2}$ и $g_{1-\alpha/2}$ распределения статистики $G$ такие, чтобы:
-   $$\mathbb{P}_{\theta}\left( g_{\alpha/2} < G(\mathbf{X}; \theta) < g_{1-\alpha/2} \right) = 1 - \alpha$$
-3. Выразить из центрального неравенства параметр $\theta$, перейдя к виду:
-   $$\mathbb{P}_{\theta}\left( \underline{\theta}(\mathbf{X}) < \theta < \bar{\theta}(\mathbf{X}) \right) = 1 - \alpha$$
-4. Записать искомый интервал $[\underline{\theta}(\mathbf{X}), \, \bar{\theta}(\mathbf{X})]$.
+1. Выбрать центральную статистику $G(\mathbf{X}; \theta)$, распределение которой известно и не зависит от $\theta$.
+2. Выбрать квантили $g_{\alpha/2}, g_{1-\alpha/2}$ такие, чтобы $\mathbb{P}_{\theta}(g_{\alpha/2} < G < g_{1-\alpha/2}) = 1 - \alpha$.
+3. Разрешить неравенство относительно $\theta$: $\mathbb{P}_{\theta}(\underline{\theta} < \theta < \bar{\theta}) = 1 - \alpha$.
 
-### Пример разбора задачи (Ивченко, Медведев)
-> **Задача**
->
-> Пусть $X_1, \dots, X_n$ — выборка из нормального распределения $\mathcal{N}(a, \sigma^2)$ с неизвестным средним $a$ и неизвестной дисперсией $\sigma^2$. Построить доверительный интервал уровня доверия $1-\alpha$ для математического ожидания $a$.
+### Пример разбора
+Пусть $X_1, \dots, X_n \sim \mathcal{N}(a, \sigma^2)$ с неизвестными $a, \sigma^2$. Построить доверительный интервал для $a$ уровня доверия $1-\alpha$.
 
 **Решение:**
-1. Выберем центральную статистику. По теореме Фишера (см. [theorems_checklist.md](file:///home/d4y2k/docs/uniCORNcity/mathematic_statistics/exam/theorems_checklist.md)), статистика:
-   $$G(a) = \frac{\bar{X} - a}{S_0 / \sqrt{n}}$$
-   имеет распределение Стьюдента с $n-1$ степенями свободы $t(n-1)$, не зависящее от неизвестных параметров $a$ и $\sigma^2$.
-2. В силу симметрии распределения Стьюдента выберем квантили $-t_{1-\alpha/2}(n-1)$ и $t_{1-\alpha/2}(n-1)$ такие, что:
-   $$\mathbb{P}\left( -t_{1-\alpha/2}(n-1) < \frac{\bar{X} - a}{S_0 / \sqrt{n}} < t_{1-\alpha/2}(n-1) \right) = 1 - \alpha$$
-3. Преобразуем неравенство в скобках, умножив все части на $S_0/\sqrt{n} > 0$:
+1. Статистика: $G(a) = \frac{\bar{X} - a}{S_0 / \sqrt{n}} \sim t(n-1)$.
+2. Квантили: $\mathbb{P}\left( -t_{1-\alpha/2}(n-1) < \frac{\bar{X} - a}{S_0 / \sqrt{n}} < t_{1-\alpha/2}(n-1) \right) = 1 - \alpha$.
+3. Преобразование:
    $$-t_{1-\alpha/2}(n-1) \frac{S_0}{\sqrt{n}} < \bar{X} - a < t_{1-\alpha/2}(n-1) \frac{S_0}{\sqrt{n}}$$
-   $$\iff -\bar{X} - t_{1-\alpha/2}(n-1) \frac{S_0}{\sqrt{n}} < -a < -\bar{X} + t_{1-\alpha/2}(n-1) \frac{S_0}{\sqrt{n}}$$
-   Умножая на $-1$, меняем знаки неравенств:
-   $$\bar{X} - t_{1-\alpha/2}(n-1) \frac{S_0}{\sqrt{n}} < a < \bar{X} + t_{1-\alpha/2}(n-1) \frac{S_0}{\sqrt{n}}$$
-4. Доверительный интервал равен:
-   $$\left[ \bar{X} - t_{1-\alpha/2}(n-1) \frac{S_0}{\sqrt{n}}, \quad \bar{X} + t_{1-\alpha/2}(n-1) \frac{S_0}{\sqrt{n}} \right]$$
-   $\blacksquare$
+   $$\iff \bar{X} - t_{1-\alpha/2}(n-1) \frac{S_0}{\sqrt{n}} < a < \bar{X} + t_{1-\alpha/2}(n-1) \frac{S_0}{\sqrt{n}}$$
+   Доверительный интервал: $\left[ \bar{X} - t_{1-\alpha/2}(n-1) \frac{S_0}{\sqrt{n}}, \quad \bar{X} + t_{1-\alpha/2}(n-1) \frac{S_0}{\sqrt{n}} \right]$.
+$\blacksquare$
 
 ---
 
 ## 5. Метод 5: Построение наиболее мощного критерия (Нейман-Пирсон)
 
-Используется для выбора оптимального критического множества при проверке простой гипотезы против простой альтернативы.
-
 ### Алгоритм
-1. Записать функции правдоподобия при нулевой $L_0(\mathbf{x}) = L(\mathbf{x}; \theta_0)$ и альтернативной $L_1(\mathbf{x}) = L(\mathbf{x}; \theta_1)$ гипотезах.
-2. Составить отношение правдоподобия $\Lambda(\mathbf{x}) = \frac{L_1(\mathbf{x})}{L_0(\mathbf{x})}$.
-3. По лемме Неймана-Пирсона наиболее мощный критерий отвергает $H_0$ при $\Lambda(\mathbf{x}) > c$.
-4. Путем монотонных преобразований упростить неравенство $\Lambda(\mathbf{x}) > c$ к эквивалентному виду относительно простой статистики $T(\mathbf{x}) > C$ (или $T(\mathbf{x}) < C$).
-5. Найти константу $C$ из условия фиксированного размера критерия (ошибки первого рода) $\alpha$:
-   $$\mathbb{P}_{H_0}(T(\mathbf{X}) > C) = \alpha$$
-6. Найти мощность критерия $\beta = \mathbb{P}_{H_1}(T(\mathbf{X}) > C)$ (вероятность отвергнуть $H_0$, когда верна $H_1$).
+1. Составить отношение правдоподобия $\Lambda(\mathbf{x}) = \frac{L_1(\mathbf{x})}{L_0(\mathbf{x})}$.
+2. Записать критическую область: $\Lambda(\mathbf{x}) > c$.
+3. Свести неравенство к виду $T(\mathbf{x}) > C$ (или $T(\mathbf{x}) < C$).
+4. Найти константу $C$ из условия ошибки первого рода: $\mathbb{P}_{H_0}(T(\mathbf{X}) > C) = \alpha$.
+5. Вычислить мощность критерия: $\beta = \mathbb{P}_{H_1}(T(\mathbf{X}) > C)$.
 
-### Пример разбора задачи (Ивченко, Медведев)
-> **Задача**
->
-> Пусть $X_1, \dots, X_n$ — выборка из нормального распределения $\mathcal{N}(\mu, 1)$. Найти наиболее мощный критерий уровня значимости $\alpha$ для проверки гипотезы $H_0: \mu = 0$ против альтернативы $H_1: \mu = 1$. Найти его мощность.
+### Пример разбора
+Пусть $X_1, \dots, X_n \sim \mathcal{N}(\mu, 1)$ независимы. Построить наиболее мощный критерий уровня значимости $\alpha$ для проверки $H_0: \mu = 0$ против $H_1: \mu = 1$, и вычислить его мощность.
 
 **Решение:**
-1. Запишем функции правдоподобия:
-   $$L_0(\mathbf{x}) = (2\pi)^{-n/2} \exp\left(-\frac{1}{2}\sum_{i=1}^{n} x_i^2\right)$$
-   $$L_1(\mathbf{x}) = (2\pi)^{-n/2} \exp\left(-\frac{1}{2}\sum_{i=1}^{n} (x_i - 1)^2\right)$$
-2. Составим отношение правдоподобия:
-   $$\Lambda(\mathbf{x}) = \frac{L_1(\mathbf{x})}{L_0(\mathbf{x})} = \exp\left( -\frac{1}{2}\sum_{i=1}^{n} \left( (x_i-1)^2 - x_i^2 \right) \right) = \exp\left( \sum_{i=1}^{n} x_i - \frac{n}{2} \right)$$
-3. Критическая область по лемме Неймана-Пирсона:
-   $$\exp\left( \sum_{i=1}^{n} x_i - \frac{n}{2} \right) > c \iff \sum_{i=1}^{n} x_i > \ln c + \frac{n}{2} \iff \bar{X} > C$$
-4. Найдем константу $C$. При гипотезе $H_0$ статистика выборочного среднего имеет распределение $\bar{X} \sim \mathcal{N}(0, 1/n)$.
-   Тогда нормированная величина $\sqrt{n}\bar{X} \sim \mathcal{N}(0, 1)$.
-   $$\mathbb{P}_{H_0}(\bar{X} > C) = \mathbb{P}_{H_0}\left(\sqrt{n}\bar{X} > \sqrt{n}C\right) = 1 - \Phi\left(\sqrt{n}C\right) = \alpha$$
-   где $\Phi(x)$ — функция распределения стандартного нормального закона. Отсюда:
-   $$\Phi\left(\sqrt{n}C\right) = 1 - \alpha \implies \sqrt{n}C = z_{1-\alpha} \implies C = \frac{z_{1-\alpha}}{\sqrt{n}}$$
-   где $z_{1-\alpha}$ — квантиль стандартного нормального распределения уровня $1-\alpha$.
-   Критическая область имеет вид: $W = \left\{\mathbf{x} : \bar{X} > \frac{z_{1-\alpha}}{\sqrt{n}}\right\}$.
-5. Вычислим мощность критерия $\beta$. При альтернативе $H_1$ среднее значение распределено как $\bar{X} \sim \mathcal{N}(1, 1/n)$. Тогда величина $\sqrt{n}(\bar{X}-1) \sim \mathcal{N}(0, 1)$.
-   $$\beta = \mathbb{P}_{H_1}\left(\bar{X} > \frac{z_{1-\alpha}}{\sqrt{n}}\right) = \mathbb{P}_{H_1}\left(\sqrt{n}(\bar{X}-1) > z_{1-\alpha} - \sqrt{n}\right) = 1 - \Phi\left(z_{1-\alpha} - \sqrt{n}\right)$$
-   Используя свойство симметрии $\Phi(-x) = 1 - \Phi(x)$, окончательно получаем:
-   $$\beta = \Phi\left(\sqrt{n} - z_{1-\alpha}\right)$$
-   *Вывод:* Мощность критерия возрастает с ростом объема выборки $n$, стремясь к 1. $\blacksquare$
+1. Отношение правдоподобия:
+   $$\Lambda(\mathbf{x}) = \frac{(2\pi)^{-n/2} \exp\left(-\frac{1}{2}\sum (x_i - 1)^2\right)}{(2\pi)^{-n/2} \exp\left(-\frac{1}{2}\sum x_i^2\right)} = \exp\left( \sum_{i=1}^{n} x_i - \frac{n}{2} \right)$$
+2. Неравенство $\Lambda(\mathbf{x}) > c \iff \bar{X} > C$.
+3. Под гипотезой $H_0: \bar{X} \sim \mathcal{N}(0, 1/n) \implies \sqrt{n}\bar{X} \sim \mathcal{N}(0, 1)$.
+   $$\mathbb{P}_{H_0}(\bar{X} > C) = 1 - \Phi(\sqrt{n}C) = \alpha \implies C = \frac{z_{1-\alpha}}{\sqrt{n}}$$
+   Критическая область: $W = \left\{\mathbf{x} : \bar{X} > \frac{z_{1-\alpha}}{\sqrt{n}}\right\}$.
+4. При $H_1: \bar{X} \sim \mathcal{N}(1, 1/n) \implies \sqrt{n}(\bar{X}-1) \sim \mathcal{N}(0, 1)$.
+   $$\beta = \mathbb{P}_{H_1}\left(\bar{X} > \frac{z_{1-\alpha}}{\sqrt{n}}\right) = \mathbb{P}_{H_1}\left(\sqrt{n}(\bar{X}-1) > z_{1-\alpha} - \sqrt{n}\right) = 1 - \Phi(z_{1-\alpha} - \sqrt{n}) = \Phi\left(\sqrt{n} - z_{1-\alpha}\right)$$
+$\blacksquare$

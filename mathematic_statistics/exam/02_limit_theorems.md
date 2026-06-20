@@ -7,306 +7,143 @@ status: done
 
 # Раздел 2. Предельные теоремы и сходимости
 
-Этот раздел посвящен асимптотическому поведению последовательностей случайных величин при неограниченном росте их числа. Предельные закономерности лежат в основе всей математической статистики: они объясняют переходы от случайного к детерминированному (законы больших чисел) и обосновывают универсальность нормального распределения (центральная предельная теорема).
-
----
-
 ## 2.1. Виды сходимости и неравенства
 
-### Виды сходимости последовательностей случайных величин
-Пусть $\{X_n\}_{n=1}^{\infty}$ и $X$ — случайные величины, заданные на одном вероятностном пространстве $(\Omega, \mathcal{F}, \mathbb{P})$.
+### Виды сходимости
+Последовательность случайных величин $\{X_n\}_{n=1}^{\infty}$ сходится к случайной величине $X$:
+1. **Почти наверное** ($X_n \xrightarrow{\text{п.н.}} X$):
+   $$\mathbb{P}\left(\left\{\omega \in \Omega : \lim_{n\to\infty} X_n(\omega) = X(\omega)\right\}\right) = 1$$
+2. **По вероятности** ($X_n \xrightarrow{\mathbb{P}} X$):
+   $$\forall \varepsilon > 0: \lim_{n\to\infty} \mathbb{P}(|X_n - X| \ge \varepsilon) = 0$$
+3. **В среднем порядка $p \ge 1$** ($X_n \xrightarrow{L^p} X$):
+   $$\lim_{n\to\infty} \mathbb{E}[|X_n - X|^p] = 0 \quad (\mathbb{E}[|X_n|^p] < \infty, \, \mathbb{E}[|X|^p] < \infty)$$
+4. **По распределению** ($X_n \xrightarrow{d} X$):
+   $$\lim_{n\to\infty} F_{X_n}(x) = F_X(x) \quad \text{во всех точках непрерывности } F_X(x)$$
 
-> **Определение (Виды сходимости)**
->
-> 1. Последовательность $X_n$ сходится к $X$ **почти наверное** ($X_n \xrightarrow{\text{п.н.}} X$), если:
->    $$\mathbb{P}\left(\left\{\omega \in \Omega : \lim_{n\to\infty} X_n(\omega) = X(\omega)\right\}\right) = 1$$
-> 2. Последовательность $X_n$ сходится к $X$ **по вероятности** ($X_n \xrightarrow{\mathbb{P}} X$), если для любого $\varepsilon > 0$:
->    $$\lim_{n\to\infty} \mathbb{P}(|X_n - X| \ge \varepsilon) = 0$$
-> 3. Последовательность $X_n$ сходится к $X$ **в среднем порядка $p \ge 1$** ($X_n \xrightarrow{L^p} X$), если $\mathbb{E}[|X_n|^p] < \infty$, $\mathbb{E}[|X|^p] < \infty$ и:
->    $$\lim_{n\to\infty} \mathbb{E}[|X_n - X|^p] = 0$$
-> 4. Последовательность $X_n$ сходится к $X$ **по распределению** (слабо) ($X_n \xrightarrow{d} X$), если:
->    $$\lim_{n\to\infty} F_{X_n}(x) = F_X(x)$$
->    для каждого $x \in \mathbb{R}$, являющегося точкой непрерывности предельной функции распределения $F_X(x)$.
+Иерархия сходимостей:
+- $X_n \xrightarrow{\text{п.н.}} X \implies X_n \xrightarrow{\mathbb{P}} X$.
+- $X_n \xrightarrow{L^p} X \implies X_n \xrightarrow{\mathbb{P}} X$.
+- $X_n \xrightarrow{\mathbb{P}} X \implies X_n \xrightarrow{d} X$.
 
-Связи между видами сходимостей описываются следующими импликациями:
-$$\begin{array}{ccc}
-X_n \xrightarrow{\text{п.н.}} X & & X_n \xrightarrow{L^p} X \\
-& \searrow & \swarrow \\
-& X_n \xrightarrow{\mathbb{P}} X & \\
-& \downarrow & \\
-& X_n \xrightarrow{d} X &
-\end{array}$$
-
-#### Доказательство импликации $X_n \xrightarrow{\text{п.н.}} X \implies X_n \xrightarrow{\mathbb{P}} X$
-Определим для каждого $\varepsilon > 0$ и $n \in \mathbb{N}$ события:
-$$A_n(\varepsilon) = \bigcup_{k=n}^{\infty} \{|X_k - X| \ge \varepsilon\}$$
-Заметим, что последовательность событий $A_n(\varepsilon)$ монотонно убывает по включению ($A_n(\varepsilon) \supset A_{n+1}(\varepsilon)$), поэтому её предел равен их пересечению:
-$$A(\varepsilon) = \bigcap_{n=1}^{\infty} A_n(\varepsilon) = \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{|X_k - X| \ge \varepsilon\} = \{|X_n - X| \ge \varepsilon \text{ бесконечно много раз}\}$$
-Если $X_n \xrightarrow{\text{п.н.}} X$, то множество элементарных исходов, на которых нет сходимости, имеет нулевую вероятность. Множество расходимости можно записать как:
-$$\{\omega : X_n(\omega) \not\to X(\omega)\} = \bigcup_{m=1}^{\infty} A(1/m)$$
-Следовательно, для любого $\varepsilon > 0$ выполнено $\mathbb{P}(A(\varepsilon)) = 0$.
-В силу непрерывности вероятностной меры на убывающих последовательностях событий:
-$$\lim_{n\to\infty} \mathbb{P}(A_n(\varepsilon)) = \mathbb{P}(A(\varepsilon)) = 0$$
-Поскольку для любого $n$ справедливо включение $\{|X_n - X| \ge \varepsilon\} \subset A_n(\varepsilon)$, в силу монотонности вероятности получаем:
+**Доказательство импликации $X_n \xrightarrow{\text{п.н.}} X \implies X_n \xrightarrow{\mathbb{P}} X$:**
+Пусть $A_n(\varepsilon) = \bigcup_{k=n}^{\infty} \{|X_k - X| \ge \varepsilon\}$ для $\varepsilon > 0$.
+Последовательность $A_n(\varepsilon)$ убывает по включению к $A(\varepsilon) = \{|X_k - X| \ge \varepsilon \text{ б.ч.}\}$.
+Поскольку $\{\omega: X_n(\omega) \not\to X(\omega)\} = \bigcup_{m=1}^{\infty} A(1/m)$, из сходимости п.н. следует $\mathbb{P}(A(\varepsilon)) = 0$.
+По непрерывности меры $\lim_{n\to\infty} \mathbb{P}(A_n(\varepsilon)) = \mathbb{P}(A(\varepsilon)) = 0$.
+Так как $\{|X_n - X| \ge \varepsilon\} \subset A_n(\varepsilon)$, по монотонности вероятности:
 $$0 \le \mathbb{P}(|X_n - X| \ge \varepsilon) \le \mathbb{P}(A_n(\varepsilon)) \xrightarrow[n\to\infty]{} 0$$
-Таким образом, $X_n \xrightarrow{\mathbb{P}} X$. $\blacksquare$
+$\blacksquare$
 
-#### Доказательство импликации $X_n \xrightarrow{\mathbb{P}} X \implies X_n \xrightarrow{d} X$
-Пусть $F_n(x) = \mathbb{P}(X_n < x)$ и $F(x) = \mathbb{P}(X < x)$. Зафиксируем произвольное $\varepsilon > 0$.
-Событие $\{X_n < x\}$ можно представить в виде объединения двух непересекающихся событий:
+**Доказательство импликации $X_n \xrightarrow{\mathbb{P}} X \implies X_n \xrightarrow{d} X$:**
+Для $\varepsilon > 0$:
 $$\{X_n < x\} = \{X_n < x, \, |X_n - X| < \varepsilon\} \cup \{X_n < x, \, |X_n - X| \ge \varepsilon\}$$
-Если $X_n < x$ и $|X_n - X| < \varepsilon$, то $X < X_n + \varepsilon < x + \varepsilon$. Отсюда:
-$$\mathbb{P}(X_n < x) \le \mathbb{P}(X < x + \varepsilon) + \mathbb{P}(|X_n - X| \ge \varepsilon) \implies F_n(x) \le F(x + \varepsilon) + \mathbb{P}(|X_n - X| \ge \varepsilon)$$
-Проведя аналогичное рассуждение для события $\{X < x - \varepsilon\}$, получим:
+$$\implies F_n(x) \le F(x + \varepsilon) + \mathbb{P}(|X_n - X| \ge \varepsilon)$$
+Аналогично:
 $$F(x - \varepsilon) \le F_n(x) + \mathbb{P}(|X_n - X| \ge \varepsilon)$$
-Объединяя оба неравенства, имеем:
+Отсюда:
 $$F(x - \varepsilon) - \mathbb{P}(|X_n - X| \ge \varepsilon) \le F_n(x) \le F(x + \varepsilon) + \mathbb{P}(|X_n - X| \ge \varepsilon)$$
-Перейдем к пределу при $n \to \infty$. Поскольку $\mathbb{P}(|X_n - X| \ge \varepsilon) \to 0$, получаем:
+При $n \to \infty$:
 $$F(x - \varepsilon) \le \liminf_{n\to\infty} F_n(x) \le \limsup_{n\to\infty} F_n(x) \le F(x + \varepsilon)$$
-Если $x$ является точкой непрерывности функции $F$, то при $\varepsilon \to 0$ пределы слева и справа совпадают: $\lim_{\varepsilon \to 0} F(x - \varepsilon) = \lim_{\varepsilon \to 0} F(x + \varepsilon) = F(x)$.
-По теореме о зажатой последовательности:
-$$\lim_{n\to\infty} F_n(x) = F(x)$$
-что доказывает слабую сходимость. $\blacksquare$
+Если $x$ — точка непрерывности $F$, то устремляя $\varepsilon \to 0$, получаем $\lim_{n\to\infty} F_n(x) = F(x)$. $\blacksquare$
 
-#### Контрпример: Сходимость по вероятности не влечет сходимость почти наверное
-Рассмотрим вероятностное пространство на отрезке $\Omega = [0, 1]$ с $\sigma$-алгеброй борелевских подмножеств и лебеговой мерой $\mathbb{P}$ (равномерное распределение).
-Определим последовательность индикаторов интервалов $I_n$:
-- $I_1 = [0, 1]$;
-- $I_2 = [0, 1/2], \, I_3 = [1/2, 1]$;
-- $I_4 = [0, 1/3], \, I_5 = [1/3, 2/3], \, I_6 = [2/3, 1]$;
-- и так далее (семейство «бегающих» интервалов, длина которых стремится к 0).
-
-Положим $X_n(\omega) = \mathbb{I}_{I_n}(\omega)$.
-Для любого $\varepsilon \in (0, 1)$ вероятность отклонения равна длине интервала $I_n$:
-$$\mathbb{P}(|X_n - 0| \ge \varepsilon) = \mathbb{P}(X_n = 1) = \lambda(I_n) \xrightarrow[n\to\infty]{} 0$$
-Следовательно, $X_n \xrightarrow{\mathbb{P}} 0$.
-Однако для любой точки $\omega \in [0, 1]$ последовательность значений $X_n(\omega)$ содержит бесконечно много нулей и бесконечно много единиц (поскольку точка бесконечно часто покрывается бегающими интервалами и бесконечно часто остается вне их). Числовой предел $\lim_{n\to\infty} X_n(\omega)$ не существует ни для одной точки $\omega$.
-Таким образом, $\mathbb{P}(\lim_{n\to\infty} X_n = 0) = 0$, и сходимости почти наверное нет.
+**Контрпример $X_n \xrightarrow{\mathbb{P}} 0 \not\implies X_n \xrightarrow{\text{п.н.}} 0$:**
+$\Omega = [0, 1]$, $\mathbb{P}$ — мера Лебега. Последовательность индикаторов интервалов $I_n$:
+$I_1 = [0, 1], I_2 = [0, 1/2], I_3 = [1/2, 1], I_4 = [0, 1/3], I_5 = [1/3, 2/3], I_6 = [2/3, 1], \dots$.
+Пусть $X_n(\omega) = \mathbb{I}_{I_n}(\omega)$.
+$\forall \varepsilon \in (0, 1): \mathbb{P}(|X_n| \ge \varepsilon) = \mathbb{P}(X_n = 1) = \lambda(I_n) \to 0 \implies X_n \xrightarrow{\mathbb{P}} 0$.
+Для любого $\omega \in [0, 1]$ последовательность $X_n(\omega)$ содержит бесконечно много $0$ и $1$ (предел не существует), поэтому $\mathbb{P}(\lim_{n\to\infty} X_n = 0) = 0$.
 
 ### Вероятностные неравенства
-
-> **Теорема (Неравенства Маркова и Чебышева)**
->
-> 1. **Неравенство Маркова:** Если $Y$ — неотрицательная случайная величина с конечным математическим ожиданием, то для любого $\varepsilon > 0$:
->    $$\mathbb{P}(Y \ge \varepsilon) \le \frac{\mathbb{E}[Y]}{\varepsilon}$$
-> 2. **Неравенство Чебышева:** Если случайная величина $X$ имеет конечную дисперсию, то для любого $\varepsilon > 0$:
->    $$\mathbb{P}(|X - \mathbb{E}[X]| \ge \varepsilon) \le \frac{\mathbb{D}[X]}{\varepsilon^2}$$
-
+**Неравенство Маркова:** Для неотрицательной $Y$ и $\varepsilon > 0$:
+$$\mathbb{P}(Y \ge \varepsilon) \le \frac{\mathbb{E}[Y]}{\varepsilon}$$
 **Доказательство:**
-1. Запишем математическое ожидание неотрицательной случайной величины $Y$ через интеграл Лебега:
-   $$\mathbb{E}[Y] = \int_{\Omega} Y(\omega) \, d\mathbb{P}(\omega) = \int_{\{Y \ge \varepsilon\}} Y(\omega) \, d\mathbb{P}(\omega) + \int_{\{Y < \varepsilon\}} Y(\omega) \, d\mathbb{P}(\omega)$$
-   Поскольку $Y \ge 0$, второй интеграл в правой части неотрицателен. В первом же интеграле подынтегральная функция оценивается снизу константой $\varepsilon$. Таким образом:
-   $$\mathbb{E}[Y] \ge \int_{\{Y \ge \varepsilon\}} \varepsilon \, d\mathbb{P}(\omega) = \varepsilon \mathbb{P}(Y \ge \varepsilon)$$
-   Разделив обе части на $\varepsilon > 0$, получаем требуемое неравенство Маркова.
-2. Для доказательства неравенства Чебышева применим неравенство Маркова к неотрицательной случайной величине $Y = (X - \mathbb{E}[X])^2$ при значении порога $\varepsilon^2 > 0$:
-   $$\mathbb{P}(|X - \mathbb{E}[X]| \ge \varepsilon) = \mathbb{P}\left((X - \mathbb{E}[X])^2 \ge \varepsilon^2\right) \le \frac{\mathbb{E}[(X - \mathbb{E}[X])^2]}{\varepsilon^2} = \frac{\mathbb{D}[X]}{\varepsilon^2}$$
-   Что и требовалось доказать. $\blacksquare$
+$$\mathbb{E}[Y] = \int_{\Omega} Y \, d\mathbb{P} = \int_{\{Y \ge \varepsilon\}} Y \, d\mathbb{P} + \int_{\{Y < \varepsilon\}} Y \, d\mathbb{P} \ge \int_{\{Y \ge \varepsilon\}} \varepsilon \, d\mathbb{P} = \varepsilon \mathbb{P}(Y \ge \varepsilon)$$
+$\blacksquare$
 
-#### Неравенство Гаусса и правило «трех сигм»
-Для унимодальных распределений оценки Чебышева могут быть существенно усилены. Распределение называется **унимодальным** с модой в точке $m$, если его функция распределения выпукла на $(-\infty, m)$ и вогнута на $(m, +\infty)$.
+**Неравенство Чебышева:** Для любой $X$ с конечной дисперсией и $\varepsilon > 0$:
+$$\mathbb{P}(|X - \mathbb{E}[X]| \ge \varepsilon) \le \frac{\mathbb{D}[X]}{\varepsilon^2}$$
+**Доказательство:** Применить неравенство Маркова к $Y = (X - \mathbb{E}[X])^2$ при пороге $\varepsilon^2$:
+$$\mathbb{P}(|X - \mathbb{E}[X]| \ge \varepsilon) = \mathbb{P}\left((X - \mathbb{E}[X])^2 \ge \varepsilon^2\right) \le \frac{\mathbb{E}[(X - \mathbb{E}[X])^2]}{\varepsilon^2} = \frac{\mathbb{D}[X]}{\varepsilon^2}$$
+$\blacksquare$
 
-> **Неравенство Гаусса (Высочанского–Петунина)**
->
-> Если случайная величина $X$ имеет унимодальное распределение с модой $m$, а $\sigma_m^2 = \mathbb{E}[(X - m)^2]$ конечна, то для любого $r > 0$:
-> $$\mathbb{P}(|X - m| \ge r) \le \begin{cases}
-> 1 - \frac{r}{\sigma_m \sqrt{3}}, & \text{если } r \le \frac{2\sigma_m}{\sqrt{3}} \\
-> \frac{4}{9} \frac{\sigma_m^2}{r^2}, & \text{если } r \ge \frac{2\sigma_m}{\sqrt{3}}
-> \end{cases}$$
+**Неравенство Гаусса (Высочанского–Петунина):**
+Для унимодального $X$ с модой $m$ и $\sigma_m^2 = \mathbb{E}[(X-m)^2]$:
+$$\mathbb{P}(|X - m| \ge r) \le \frac{4}{9} \frac{\sigma_m^2}{r^2} \quad \text{при } r \ge \sqrt{8/3}\sigma_m$$
+Для $r = 3\sigma$ это дает правило «трех сигм»: $\mathbb{P}(|X - \mathbb{E}[X]| \ge 3\sigma) \le \frac{4}{81} \approx 0.0494$.
 
-Для симметричной унимодальной случайной величины мода $m$ совпадает с математическим ожиданием $\mathbb{E}[X]$, а $\sigma_m^2 = \mathbb{D}[X]$. Применив это неравенство к порогу $r = 3\sigma$, получаем:
-$$\mathbb{P}(|X - \mathbb{E}[X]| \ge 3\sigma) \le \frac{4}{9 \cdot 9} = \frac{4}{81} \approx 0.0494$$
-Это теоретическое обоснование **правила «трех сигм»**: для любого унимодального распределения вероятность выйти за пределы трехсреднеквадратических отклонений от центра не превышает $5\%$.
-
-#### Неравенство Колмогорова
-Это неравенство обобщает оценку Чебышева на максимум последовательности частичных сумм независимых величин.
-
-> **Теорема (Неравенство Колмогорова)**
->
-> Пусть $X_1, \dots, X_n$ — независимые случайные величины с нулевыми математическими ожиданиями и конечными дисперсиями. Обозначим частичные суммы $S_k = \sum_{i=1}^{k} X_i$. Тогда для любого $\varepsilon > 0$:
-> $$\mathbb{P}\left(\max_{1 \le k \le n} |S_k| \ge \varepsilon\right) \le \frac{\mathbb{D}[S_n]}{\varepsilon^2}$$
-
+**Неравенство Колмогорова:**
+Для независимых $X_1, \dots, X_n$ с $\mathbb{E}[X_i] = 0, \mathbb{D}[X_i] = \sigma_i^2$, и $S_k = \sum_{i=1}^k X_i$:
+$$\mathbb{P}\left(\max_{1 \le k \le n} |S_k| \ge \varepsilon\right) \le \frac{\mathbb{D}[S_n]}{\varepsilon^2}$$
 **Доказательство:**
-Введем непересекающиеся события $A_k$, каждое из которых означает, что превышение порога $\varepsilon$ впервые произошло на шаге $k$:
-$$A_k = \{|S_k| \ge \varepsilon \text{ и } |S_j| < \varepsilon \text{ для всех } j < k\}, \quad k = 1, \dots, n$$
-Объединение $\sum_{k=1}^{n} A_k$ есть в точности событие $A = \{\max_{1 \le k \le n} |S_k| \ge \varepsilon\}$.
-Запишем дисперсию конечной суммы (которая совпадает со вторым моментом в силу центрированности):
-$$\mathbb{D}[S_n] = \mathbb{E}[S_n^2] \ge \mathbb{E}[S_n^2 \mathbb{I}_A] = \sum_{k=1}^{n} \mathbb{E}[S_n^2 \mathbb{I}_{A_k}]$$
-Представим $S_n^2 = (S_k + (S_n - S_k))^2 = S_k^2 + 2S_k(S_n - S_k) + (S_n - S_k)^2 \ge S_k^2 + 2S_k(S_n - S_k)$. Тогда:
-$$\mathbb{E}[S_n^2 \mathbb{I}_{A_k}] \ge \mathbb{E}[S_k^2 \mathbb{I}_{A_k}] + 2 \mathbb{E}[S_k(S_n - S_k) \mathbb{I}_{A_k}]$$
-Поскольку события $A_k$ определяются лишь величинами $X_1, \dots, X_k$, случайная величина $S_k \mathbb{I}_{A_k}$ измерима относительно $\sigma$-алгебры $\sigma(X_1, \dots, X_k)$. В то же время разность $S_n - S_k = \sum_{i=k+1}^{n} X_i$ измерима относительно $\sigma(X_{k+1}, \dots, X_n)$.
-В силу независимости исходных случайных величин эти две $\sigma$-алгебры независимы. Значит:
-$$\mathbb{E}[S_k(S_n - S_k) \mathbb{I}_{A_k}] = \mathbb{E}[S_k \mathbb{I}_{A_k}] \mathbb{E}[S_n - S_k] = 0$$
-так как $\mathbb{E}[S_n - S_k] = \sum_{i=k+1}^{n} \mathbb{E}[X_i] = 0$.
-Следовательно, возвращаясь к неравенству:
-$$\mathbb{E}[S_n^2 \mathbb{I}_{A_k}] \ge \mathbb{E}[S_k^2 \mathbb{I}_{A_k}]$$
-На множестве $A_k$ выполнено $|S_k| \ge \varepsilon \implies S_k^2 \ge \varepsilon^2$. Отсюда:
-$$\mathbb{E}[S_k^2 \mathbb{I}_{A_k}] \ge \varepsilon^2 \mathbb{P}(A_k)$$
-Суммируя эти неравенства по $k$, находим:
+Пусть $A_k = \{|S_k| \ge \varepsilon, \, |S_j| < \varepsilon \text{ при } j < k\}$. Тогда $A = \sum_{k=1}^n A_k = \{\max |S_k| \ge \varepsilon\}$.
+$$\mathbb{D}[S_n] = \mathbb{E}[S_n^2] \ge \sum_{k=1}^{n} \mathbb{E}[S_n^2 \mathbb{I}_{A_k}]$$
+Поскольку $S_n = S_k + (S_n - S_k)$:
+$$\mathbb{E}[S_n^2 \mathbb{I}_{A_k}] \ge \mathbb{E}[S_k^2 \mathbb{I}_{A_k}] + 2 \mathbb{E}[S_k (S_n - S_k) \mathbb{I}_{A_k}]$$
+В силу независимости $S_k \mathbb{I}_{A_k}$ и $S_n - S_k$, и учитывая $\mathbb{E}[S_n - S_k] = 0$:
+$$\mathbb{E}[S_k (S_n - S_k) \mathbb{I}_{A_k}] = 0 \implies \mathbb{E}[S_n^2 \mathbb{I}_{A_k}] \ge \mathbb{E}[S_k^2 \mathbb{I}_{A_k}] \ge \varepsilon^2 \mathbb{P}(A_k)$$
 $$\mathbb{D}[S_n] \ge \sum_{k=1}^{n} \varepsilon^2 \mathbb{P}(A_k) = \varepsilon^2 \mathbb{P}(A)$$
-Разделив на $\varepsilon^2$, получаем требуемое неравенство. $\blacksquare$
+$\blacksquare$
 
-### Лемма Бореля–Кантелли
-Лемма Бореля–Кантелли является важным инструментом доказательства сходимости почти наверное.
-
-> **Лемма (Бореля–Кантелли)**
->
-> Пусть $\{A_n\}_{n=1}^{\infty}$ — последовательность событий.
-> 1. Если ряд из вероятностей сходится: $\sum_{n=1}^{\infty} \mathbb{P}(A_n) < \infty$, то вероятность наступления бесконечного числа этих событий равна нулю:
->    $$\mathbb{P}(\limsup_{n\to\infty} A_n) = 0$$
-> 2. Если ряд расходится: $\sum_{n=1}^{\infty} \mathbb{P}(A_n) = \infty$, и события $\{A_n\}_{n=1}^{\infty}$ независимы в совокупности, то вероятность наступления бесконечного числа событий равна единице:
->    $$\mathbb{P}(\limsup_{n\to\infty} A_n) = 1$$
-
+**Лемма Бореля–Кантелли:**
+1. Если $\sum_{n=1}^{\infty} \mathbb{P}(A_n) < \infty$, то $\mathbb{P}(\limsup A_n) = 0$.
+2. Если $\sum_{n=1}^{\infty} \mathbb{P}(A_n) = \infty$ и $\{A_n\}$ независимы, то $\mathbb{P}(\limsup A_n) = 1$.
 **Доказательство:**
-1. Обозначим $A^* = \limsup_{n\to\infty} A_n = \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} A_k$.
-   Для любого $n \in \mathbb{N}$ выполнено включение $A^* \subset \bigcup_{k=n}^{\infty} A_k$.
-   По свойству субаддитивности вероятностной меры:
-   $$\mathbb{P}(A^*) \le \mathbb{P}\left(\bigcup_{k=n}^{\infty} A_k\right) \le \sum_{k=n}^{\infty} \mathbb{P}(A_k)$$
-   Поскольку числовой ряд $\sum_{k=1}^{\infty} \mathbb{P}(A_k)$ сходится, предел остатка ряда стремится к нулю:
-   $$\lim_{n\to\infty} \sum_{k=n}^{\infty} \mathbb{P}(A_k) = 0$$
-   Следовательно, $0 \le \mathbb{P}(A^*) \le 0 \implies \mathbb{P}(A^*) = 0$.
-2. Докажем вторую часть. Эквивалентно покажем, что вероятность противоположного события равна нулю:
-   $$\mathbb{P}((A^*)^c) = \mathbb{P}\left( \bigcup_{n=1}^{\infty} \bigcap_{k=n}^{\infty} A_k^c \right) = 0$$
-   Для этого достаточно доказать, что для каждого фиксированного $n \in \mathbb{N}$ вероятность пересечения событий $\mathbb{P}\left(\bigcap_{k=n}^{\infty} A_k^c\right) = 0$.
-   Рассмотрим конечные пересечения для $M > n$. В силу независимости событий $\{A_k\}$, дополнения $\{A_k^c\}$ также независимы:
-   $$\mathbb{P}\left(\bigcap_{k=n}^{M} A_k^c\right) = \prod_{k=n}^{M} (1 - \mathbb{P}(A_k))$$
-   Используем элементарное неравенство $1 - x \le e^{-x}$ для $x \ge 0$:
-   $$\prod_{k=n}^{M} (1 - \mathbb{P}(A_k)) \le \prod_{k=n}^{M} e^{-\mathbb{P}(A_k)} = \exp\left(-\sum_{k=n}^{M} \mathbb{P}(A_k)\right)$$
-   По условию теоремы ряд расходится, следовательно, $\lim_{M\to\infty} \sum_{k=n}^{M} \mathbb{P}(A_k) = \infty$.
-   Переходя к пределу при $M \to \infty$ и используя свойство непрерывности вероятности на убывающих последовательностях событий:
-   $$\mathbb{P}\left(\bigcap_{k=n}^{\infty} A_k^c\right) = \lim_{M\to\infty} \mathbb{P}\left(\bigcap_{k=n}^{M} A_k^c\right) \le \lim_{M\to\infty} \exp\left(-\sum_{k=n}^{M} \mathbb{P}(A_k)\right) = 0$$
-   Так как объединение счетного числа событий нулевой вероятности имеет вероятность ноль, получаем $\mathbb{P}((A^*)^c) = 0 \implies \mathbb{P}(A^*) = 1$. $\blacksquare$
+1. Пусть $A^* = \limsup A_n = \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} A_k \implies \mathbb{P}(A^*) \le \sum_{k=n}^{\infty} \mathbb{P}(A_k) \to 0$ при $n \to \infty$.
+2. $\mathbb{P}((A^*)^c) = \mathbb{P}(\bigcup_{n=1}^\infty \bigcap_{k=n}^\infty A_k^c)$.
+   $\mathbb{P}(\bigcap_{k=n}^{M} A_k^c) = \prod_{k=n}^{M} (1 - \mathbb{P}(A_k)) \le \exp\left(-\sum_{k=n}^M \mathbb{P}(A_k)\right) \to 0$ при $M \to \infty \implies \mathbb{P}(\bigcap_{k=n}^\infty A_k^c) = 0$.
+   $\blacksquare$
 
 ---
 
 ## 2.2. Закон больших чисел (ЗБЧ) и ЦПТ
 
-### Закон больших чисел в форме Чебышева и Хинчина
-Закон больших чисел утверждает сходимость по вероятности средних арифметических случайных величин к их средним ожиданиям.
+### Закон больших чисел
+**ЗБЧ Чебышева:** Если $X_n$ попарно независимы, одинаково распределены, и $\mathbb{D}[X_1] = \sigma^2 < \infty$:
+$$\frac{1}{n} \sum_{i=1}^{n} X_i \xrightarrow[n\to\infty]{\mathbb{P}} \mathbb{E}[X_1]$$
+**Доказательство:** Пусть $\mu = \mathbb{E}[X_1]$, $S_n = \sum_{i=1}^n X_i$. По неравенству Чебышева:
+$$\mathbb{P}\left(\left|\frac{S_n}{n} - \mu\right| \ge \varepsilon\right) \le \frac{\mathbb{D}[S_n/n]}{\varepsilon^2} = \frac{n \sigma^2}{n^2 \varepsilon^2} = \frac{\sigma^2}{n \varepsilon^2} \xrightarrow[n\to\infty]{} 0$$
+$\blacksquare$
 
-> **Теорема (ЗБЧ Чебышева)**
->
-> Пусть случайные величины $\{X_n\}_{n=1}^{\infty}$ попарно независимы, имеют одинаковое распределение и конечный второй момент (а значит, существует дисперсия $\mathbb{D}[X_i] = \sigma^2 < \infty$).
-> Тогда среднее арифметическое сходится по вероятности к математическому ожиданию:
-> $$\frac{1}{n} \sum_{i=1}^{n} X_i \xrightarrow[n\to\infty]{\mathbb{P}} \mathbb{E}[X_1]$$
+**ЗБЧ Хинчина:** Если $X_n$ независимы, одинаково распределены, и $\mathbb{E}[|X_1|] < \infty$, то:
+$$\frac{1}{n} \sum_{i=1}^{n} X_i \xrightarrow[n\to\infty]{\mathbb{P}} \mathbb{E}[X_1]$$
 
+**УЗБЧ Колмогорова:** Если $X_n$ независимы, одинаково распределены, то $\frac{1}{n}\sum_{i=1}^{n} X_i \xrightarrow{\text{п.н.}} \mathbb{E}[X_1] \iff \mathbb{E}[|X_1|] < \infty$.
+**Лемма Кронекера:** Если $a_n \uparrow \infty$ и $\sum_{n=1}^{\infty} \frac{x_n}{a_n}$ сходится, то $\lim_{n\to\infty} \frac{1}{a_n} \sum_{i=1}^{n} x_i = 0$.
+
+### Характеристические функции
+**Характеристическая функция (ХФ):** $\varphi_X(t) = \mathbb{E}[e^{itX}]$.
+Свойства:
+1. $\varphi(0) = 1, \, |\varphi(t)| \le 1$.
+2. $\varphi(-t) = \overline{\varphi(t)}$.
+3. $\varphi_{aX+b}(t) = e^{itb} \varphi_X(at)$.
+4. $\varphi_{X+Y}(t) = \varphi_X(t)\varphi_Y(t)$ при независимости $X, Y$.
+5. Если $\mathbb{E}[|X|^k] < \infty$, то $\varphi(t) = \sum_{j=0}^{k} \frac{(it)^j}{j!} \mathbb{E}[X^j] + o(t^k)$ при $t \to 0$.
+
+**Теорема Леви (непрерывности):** $X_n \xrightarrow{d} X \iff \varphi_{X_n}(t) \to \varphi_X(t)$ для каждого $t \in \mathbb{R}$, где $\varphi_X(t)$ непрерывна в $t=0$.
+
+**Доказательство теоремы Хинчина методом ХФ:**
+Пусть $\varphi(t)$ — ХФ для $X_1$, $\mathbb{E}[X_1] = \mu$. При $t \to 0$: $\varphi(t) = 1 + i\mu t + o(t)$.
+ХФ для $\overline{X}_n = \frac{S_n}{n}$:
+$$\varphi_{\overline{X}_n}(t) = \left( \varphi\left(\frac{t}{n}\right) \right)^n = \left( 1 + \frac{i\mu t}{n} + o\left(\frac{1}{n}\right) \right)^n \xrightarrow[n\to\infty]{} e^{i\mu t}$$
+По теореме Леви $\overline{X}_n \xrightarrow{d} \mu$, что эквивалентно $\overline{X}_n \xrightarrow{\mathbb{P}} \mu$. $\blacksquare$
+
+### Центральная предельная теорема
+**ЦПТ Линдеберга–Леви:**
+Для независимых одинаково распределенных $X_n$ с $\mathbb{E}[X_1] = \mu$ и $\mathbb{D}[X_1] = \sigma^2 > 0$:
+$$Y_n = \frac{\sum_{i=1}^{n} X_i - n\mu}{\sigma\sqrt{n}} \xrightarrow[n\to\infty]{d} \mathcal{N}(0, 1)$$
 **Доказательство:**
-Обозначим $\mu = \mathbb{E}[X_1]$ и $S_n = \sum_{i=1}^{n} X_i$. В силу линейности математического ожидания $\mathbb{E}[S_n/n] = \mu$.
-Вычислим дисперсию среднего арифметического независимых величин:
-$$\mathbb{D}\left[\frac{S_n}{n}\right] = \frac{1}{n^2} \mathbb{D}[S_n] = \frac{1}{n^2} \sum_{i=1}^{n} \mathbb{D}[X_i] = \frac{n \sigma^2}{n^2} = \frac{\sigma^2}{n}$$
-Применим к случайной величине $S_n/n$ неравенство Чебышева для произвольного $\varepsilon > 0$:
-$$\mathbb{P}\left(\left|\frac{S_n}{n} - \mu\right| \ge \varepsilon\right) \le \frac{\mathbb{D}[S_n/n]}{\varepsilon^2} = \frac{\sigma^2}{n \varepsilon^2}$$
-Переходя к пределу при $n \to \infty$, получаем:
-$$\lim_{n\to\infty} \mathbb{P}\left(\left|\frac{S_n}{n} - \mu\right| \ge \varepsilon\right) \le \lim_{n\to\infty} \frac{\sigma^2}{n \varepsilon^2} = 0$$
-что по определению означает сходимость по вероятности. $\blacksquare$
+Пусть $\mu=0, \sigma^2=1$. ХФ для $X_1$: $\varphi(t) = 1 - \frac{t^2}{2} + o(t^2)$.
+ХФ для $Y_n = \frac{S_n}{\sqrt{n}}$:
+$$\varphi_{Y_n}(t) = \left( \varphi\left(\frac{t}{\sqrt{n}}\right) \right)^n = \left( 1 - \frac{t^2}{2n} + o\left(\frac{1}{n}\right) \right)^n \xrightarrow[n\to\infty]{} e^{-t^2/2}$$
+По теореме Леви $Y_n \xrightarrow{d} \mathcal{N}(0, 1)$. $\blacksquare$
 
-Теорема Хинчина освобождает утверждение от требования конечности дисперсии, требуя лишь существование первого момента. Доказательство теоремы Хинчина опирается на аппарат характеристических функций (будет приведено ниже).
+**Условие Линдеберга (для независимых $X_k$, $B_n^2 = \sum_{k=1}^n \mathbb{D}[X_k]$):**
+$$\forall \varepsilon > 0: \lim_{n\to\infty} \frac{1}{B_n^2} \sum_{i=1}^{n} \mathbb{E}\left[ (X_i - \mathbb{E}[X_i])^2 \mathbb{I}(|X_i - \mathbb{E}[X_i]| \ge \varepsilon B_n) \right] = 0$$
 
-### Усиленный закон больших чисел (УЗБЧ)
-УЗБЧ утверждает более сильный тип сходимости — почти наверное.
-
-> **Теорема (УЗБЧ Колмогорова для одинаково распределенных величин)**
->
-> Пусть $\{X_n\}_{n=1}^{\infty}$ — независимые в совокупности одинаково распределенные случайные величины.
-> Тогда среднее арифметическое $\frac{1}{n}\sum_{i=1}^{n} X_i$ сходится почти наверное к конечному пределу тогда и только тогда, когда $\mathbb{E}[|X_1|] < \infty$. В этом случае предел равен математическому ожиданию $\mathbb{E}[X_1]$.
-
-Доказательство теоремы Колмогорова в общем случае использует метод урезания случайных величин, неравенство Колмогорова и лемму Кронекера.
-
-> **Лемма (Кронекера)**
->
-> Пусть $\{x_n\}_{n=1}^{\infty}$ — последовательность вещественных чисел, $\{a_n\}_{n=1}^{\infty}$ — монотонно возрастающая к $+\infty$ последовательность положительных чисел.
-> Если ряд $\sum_{n=1}^{\infty} \frac{x_n}{a_n}$ сходится, то:
-> $$\lim_{n\to\infty} \frac{1}{a_n} \sum_{i=1}^{n} x_i = 0$$
-
-### Инструментарий характеристических функций
-Характеристическая функция является преобразованием Фурье вероятностной меры и полностью определяет закон распределения случайной величины.
-
-> **Определение (Характеристическая функция)**
->
-> **Характеристической функцией** случайной величины $X$ называется комплекснозначная функция $\varphi_X(t)$ вещественного аргумента $t \in \mathbb{R}$, определяемая как:
-> $$\varphi_X(t) = \mathbb{E}[e^{itX}] = \int_{\mathbb{R}} e^{itx} \, dF_X(x)$$
-
-#### Основные свойства характеристических функций
-1. **Ограниченность:** $\varphi(0) = 1$, $|\varphi(t)| \le 1$ для всех $t \in \mathbb{R}$.
-2. **Симметрия:** $\varphi(-t) = \overline{\varphi(t)}$.
-3. **Равномерная непрерывность:** $\varphi(t)$ равномерно непрерывна на всей числовой прямой $\mathbb{R}$.
-4. **Линейное преобразование:** $\varphi_{aX+b}(t) = e^{itb} \varphi_X(at)$.
-5. **Характеристическая функция суммы:** если $X$ и $Y$ независимы, то $\varphi_{X+Y}(t) = \varphi_X(t)\varphi_Y(t)$.
-6. **Связь с моментами:** если существует момент $\mathbb{E}[|X|^k] < \infty$, то $\varphi_X(t)$ дифференцируема $k$ раз, причем:
-   $$\varphi_X^{(k)}(0) = i^k \mathbb{E}[X^k]$$
-   При этом справедливо разложение Тейлора в окрестности $t=0$:
-   $$\varphi_X(t) = \sum_{j=0}^{k} \frac{(it)^j}{j!} \mathbb{E}[X^j] + o(t^k)$$
-
-#### Теоремы единственности и непрерывности
-Соответствие между функциями распределения и характеристическими функциями взаимно однозначно (теорема единственности, задаваемая формулой обращения Леви). Предельные переходы обосновываются следующей фундаментальной теоремой:
-
-> **Теорема (Леви о непрерывном соответствии)**
->
-> Пусть $\{X_n\}_{n=1}^{\infty}$ — последовательность случайных величин с характеристическими функциями $\{\varphi_n(t)\}_{n=1}^{\infty}$.
-> 1. Если $X_n \xrightarrow{d} X$, где $X$ имеет характеристическую функцию $\varphi(t)$, то $\varphi_n(t) \to \varphi(t)$ при $n \to \infty$ для каждого $t \in \mathbb{R}$.
-> 2. Если последовательность функций $\varphi_n(t)$ сходится поточечно к некоторой функции $\varphi(t)$ при $n \to \infty$, причем предел $\varphi(t)$ непрерывен в точке $t=0$, то $\varphi(t)$ является характеристической функцией некоторой случайной величины $X$, и $X_n \xrightarrow{d} X$.
-
-#### Доказательство теоремы Хинчина методом ХФ
-Напомним формулировку: $X_i$ независимы, одинаково распределены, $\mathbb{E}[|X_i|] < \infty$. Докажем, что $\frac{S_n}{n} \xrightarrow{\mathbb{P}} \mu$, где $\mu = \mathbb{E}[X_1]$.
-Обозначим характеристическую функцию случайной величины $X_1$ через $\varphi(t)$. Так как первый момент существует, в окрестности нуля справедливо разложение:
-$$\varphi(t) = 1 + i\mu t + o(t), \quad t \to 0$$
-Рассмотрим характеристическую функцию среднего арифметического $\overline{X}_n = \frac{S_n}{n}$:
-$$\varphi_{\overline{X}_n}(t) = \mathbb{E}\left[e^{it \frac{X_1 + \dots + X_n}{n}}\right] = \prod_{j=1}^{n} \varphi\left(\frac{t}{n}\right) = \left( \varphi\left(\frac{t}{n}\right) \right)^n$$
-Подставим разложение Тейлора для аргумента $t/n$:
-$$\varphi_{\overline{X}_n}(t) = \left( 1 + \frac{i\mu t}{n} + o\left(\frac{t}{n}\right) \right)^n$$
-Используя замечательный предел $\lim_{n\to\infty} (1 + x_n/n)^n = e^x$ при $x_n \to x$, находим поточечный предел:
-$$\lim_{n\to\infty} \varphi_{\overline{X}_n}(t) = e^{i\mu t}$$
-Функция $e^{i\mu t}$ является характеристической функцией константы $\mu$ (вырожденного распределения) и она непрерывна в нуле.
-По теореме непрерывности Леви, $\overline{X}_n \xrightarrow{d} \mu$.
-Поскольку предельное распределение сосредоточено в одной точке ($\mu$), сходимость по распределению эквивалентна сходимости по вероятности. Таким образом, $\overline{X}_n \xrightarrow{\mathbb{P}} \mu$. $\blacksquare$
-
-### Центральная предельная теорема (ЦПТ)
-ЦПТ объясняет, почему большинство случайных величин, формирующихся под влиянием множества независимых факторов, имеют распределение, близкое к нормальному.
-
-> **Теорема (ЦПТ Линдеберга–Леви)**
->
-> Пусть $\{X_n\}_{n=1}^{\infty}$ — последовательность независимых в совокупности одинаково распределенных случайных величин с математическим ожиданием $\mathbb{E}[X_1] = \mu$ и конечной ненулевой дисперсией $\mathbb{D}[X_1] = \sigma^2 > 0$.
-> Тогда центрированная и нормированная сумма сходится по распределению к стандартному нормальному закону:
-> $$Y_n = \frac{\sum_{i=1}^{n} X_i - n\mu}{\sigma\sqrt{n}} \xrightarrow[n\to\infty]{d} \mathcal{N}(0, 1)$$
-
-**Доказательство:**
-Без потери общности предположим, что $\mu = 0$ и $\sigma^2 = 1$ (в общем случае этого можно достичь переходом к величинам $Z_i = \frac{X_i - \mu}{\sigma}$). Тогда нормированная сумма имеет вид $Y_n = \frac{S_n}{\sqrt{n}}$.
-Пусть $\varphi(t)$ — характеристическая функция величины $X_1$. Так как $\mathbb{E}[X_1] = 0$ и $\mathbb{E}[X_1^2] = 1$, разложение Тейлора функции $\varphi(t)$ в окрестности нуля имеет вид:
-$$\varphi(t) = 1 - \frac{t^2}{2} + o(t^2), \quad t \to 0$$
-Вычислим характеристическую функцию $\varphi_{Y_n}(t)$ величины $Y_n$:
-$$\varphi_{Y_n}(t) = \mathbb{E}\left[e^{it \frac{S_n}{\sqrt{n}}}\right] = \left( \varphi\left(\frac{t}{\sqrt{n}}\right) \right)^n = \left( 1 - \frac{t^2}{2n} + o\left(\frac{t^2}{n}\right) \right)^n$$
-Исследуем поведение логарифма характеристической функции при фиксированном $t$ и $n \to \infty$. Воспользуемся разложением $\ln(1+z) = z + O(z^2)$ при $z \to 0$:
-$$\ln \varphi_{Y_n}(t) = n \ln\left(1 - \frac{t^2}{2n} + o\left(\frac{1}{n}\right)\right) = n \left( - \frac{t^2}{2n} + o\left(\frac{1}{n}\right) \right) = - \frac{t^2}{2} + o(1)$$
-Переходя к пределу:
-$$\lim_{n\to\infty} \ln \varphi_{Y_n}(t) = - \frac{t^2}{2} \implies \lim_{n\to\infty} \varphi_{Y_n}(t) = e^{-t^2/2}$$
-Предельная функция $e^{-t^2/2}$ является характеристической функцией стандартного нормального распределения $\mathcal{N}(0, 1)$ и она непрерывна в нуле.
-По теореме непрерывности Леви, последовательность случайных величин $Y_n$ слабо сходится к закону $\mathcal{N}(0, 1)$. Теорема доказана. $\blacksquare$
-
-#### Условие Линдеберга и теорема Линдеберга-Феллера
-Для последовательности независимых, но не обязательно одинаково распределенных случайных величин $\{X_n\}$ с дисперсиями $\sigma_i^2$ и суммами дисперсий $B_n^2 = \sum_{i=1}^{n} \sigma_i^2$, ЦПТ имеет место при выполнении условия Линдеберга.
-
-> **Определение (Условие Линдеберга)**
->
-> Говорят, что последовательность независимых случайных величин $\{X_n\}$ удовлетворяет **условию Линдеберга**, если для любого $\varepsilon > 0$:
-> $$\lim_{n\to\infty} \frac{1}{B_n^2} \sum_{i=1}^{n} \mathbb{E}\left[ (X_i - \mathbb{E}[X_i])^2 \mathbb{I}(|X_i - \mathbb{E}[X_i]| \ge \varepsilon B_n) \right] = 0$$
-
-Физический смысл условия Линдеберга состоит в требовании равномерной малости каждого отдельного слагаемого: ни одно слагаемое в сумме не должно вносить доминирующий вклад в общую дисперсию.
-
-#### Условие Ляпунова как достаточное условие
-На практике проверять интегралы по урезанным множествам в условии Линдеберга затруднительно. Ляпунов предложил более простое достаточное условие, использующее моменты порядка $2+\delta$.
-
-> **Теорема (Условие Ляпунова)**
->
-> Если для некоторого $\delta > 0$ выполнено:
-> $$\lim_{n\to\infty} \frac{1}{B_n^{2+\delta}} \sum_{i=1}^{n} \mathbb{E}\left[ |X_i - \mathbb{E}[X_i]|^{2+\delta} \right] = 0$$
-> то условие Линдеберга выполнено, а значит, справедлива ЦПТ.
-
-**Доказательство:**
-Для краткости обозначим центрированные величины $Z_i = X_i - \mathbb{E}[X_i]$. Запишем математическое ожидание в сумме Линдеберга:
-$$\mathbb{E}\left[ Z_i^2 \mathbb{I}(|Z_i| \ge \varepsilon B_n) \right]$$
-Заметим, что на множестве $\{|Z_i| \ge \varepsilon B_n\}$ справедливо неравенство:
-$$1 \le \frac{|Z_i|^\delta}{\varepsilon^\delta B_n^\delta} \implies Z_i^2 \le \frac{|Z_i|^{2+\delta}}{\varepsilon^\delta B_n^\delta}$$
-Следовательно:
-$$\mathbb{E}\left[ Z_i^2 \mathbb{I}(|Z_i| \ge \varepsilon B_n) \right] \le \mathbb{E}\left[ Z_i^2 \frac{|Z_i|^\delta}{\varepsilon^\delta B_n^\delta} \mathbb{I}(|Z_i| \ge \varepsilon B_n) \right] \le \frac{1}{\varepsilon^\delta B_n^\delta} \mathbb{E}[|Z_i|^{2+\delta}]$$
-Суммируя по всем $i$ от $1$ до $n$ и деля на $B_n^2$, получаем:
-$$\frac{1}{B_n^2} \sum_{i=1}^{n} \mathbb{E}\left[ Z_i^2 \mathbb{I}(|Z_i| \ge \varepsilon B_n) \right] \le \frac{1}{\varepsilon^\delta} \left( \frac{1}{B_n^{2+\delta}} \sum_{i=1}^{n} \mathbb{E}[|Z_i|^{2+\delta}] \right)$$
-Если предел правой части при $n \to \infty$ равен нулю (условие Ляпунова), то и левая часть стремится к нулю для любого $\varepsilon > 0$. Таким образом, условие Линдеберга выполняется. $\blacksquare$
+**Условие Ляпунова (для некоторого $\delta > 0$):**
+$$\lim_{n\to\infty} \frac{1}{B_n^{2+\delta}} \sum_{i=1}^{n} \mathbb{E}\left[ |X_i - \mathbb{E}[X_i]|^{2+\delta} \right] = 0$$
+**Доказательство импликации Условие Ляпунова $\implies$ Условие Линдеберга:**
+Пусть $Z_i = X_i - \mathbb{E}[X_i]$. На множестве $\{|Z_i| \ge \varepsilon B_n\}$ справедливо:
+$$Z_i^2 \le Z_i^2 \frac{|Z_i|^\delta}{\varepsilon^\delta B_n^\delta} = \frac{|Z_i|^{2+\delta}}{\varepsilon^\delta B_n^\delta}$$
+$$\frac{1}{B_n^2} \sum_{i=1}^{n} \mathbb{E}\left[ Z_i^2 \mathbb{I}(|Z_i| \ge \varepsilon B_n) \right] \le \frac{1}{\varepsilon^\delta B_n^{2+\delta}} \sum_{i=1}^{n} \mathbb{E}[|Z_i|^{2+\delta}] \to 0$$
+$\blacksquare$
