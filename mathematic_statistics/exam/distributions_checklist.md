@@ -10,6 +10,7 @@ date: 2026-06-20
 ## 1. Дискретные распределения
 
 Связь числовых характеристик с производящей функцией $P(z) = \mathbb{E}[z^X]$ и характеристической функцией $\varphi(t) = \mathbb{E}[e^{itX}] = P(e^{it})$:
+
 $$\mathbb{E}[X] = P'(1), \quad \mathbb{D}[X] = P''(1) + P'(1) - (P'(1))^2$$
 
 ### Распределение Бернулли ($\operatorname{Bern}(p)$)
@@ -100,12 +101,18 @@ $\blacksquare$
 ### Нормальное распределение ($\mathcal{N}(\mu, \sigma^2)$)
 **Плотность:** $p(x) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)$.
 **Нормировка:** $J = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-z^2/2} \, dz$.
+
 $$J^2 = \frac{1}{2\pi} \int_{0}^{2\pi} d\theta \int_{0}^{\infty} e^{-r^2/2} r \, dr = \int_{0}^{\infty} e^{-u} \, du = 1 \implies J = 1$$
+
 **Вывод CF и моментов:**
 Для $Y \sim \mathcal{N}(0, 1)$:
+
 $$\varphi'_Y(t) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} i y e^{ity} e^{-y^2/2} \, dy = -t \varphi_Y(t) \implies \varphi_Y(t) = e^{-t^2/2}$$
+
 Для $X = \sigma Y + \mu$:
+
 $$\varphi_X(t) = e^{it\mu} \varphi_Y(\sigma t) = \exp\left(it\mu - \frac{\sigma^2 t^2}{2}\right) \implies \mathbb{E}[X] = \mu, \, \mathbb{D}[X] = \sigma^2$$
+
 $\blacksquare$
 
 ### Распределение Гамма ($\operatorname{Gamma}(\alpha, \beta)$)
@@ -130,8 +137,11 @@ $\blacksquare$
 **Плотность:** $p(x) = \frac{1}{\pi b \left(1 + \left(\frac{x-a}{b}\right)^2\right)}$.
 **Вывод CF методом вычетов ($a=0, b=1$):**
 Для $t > 0$ контур $\Gamma_R$ в верхней полуплоскости имеет полюс в $z=i$:
+
 $$\operatorname{Res}_{z=i} \frac{e^{itz}}{1+z^2} = \frac{e^{-t}}{2i}$$
+
 $$\oint_{\Gamma_R} \frac{e^{itz}}{1+z^2} \, dz = 2\pi i \frac{e^{-t}}{2i} = \pi e^{-t} \implies \varphi(t) = e^{-t}$$
+
 С учетом симметрии $\varphi(t) = e^{-|t|}$. Для общего случая: $\varphi_X(t) = e^{iat - b|t|}$.
 Моменты не существуют, так как $\varphi(t)$ не дифференцируема в $t=0$.
 $\blacksquare$
