@@ -253,7 +253,7 @@ $$
 \partial_*([p_n(b)]) = [a] \implies \operatorname{Ker} i_* \subset \operatorname{Im} \partial_*
 $$
 
-Теорема полностью доказана.
+■
 
 ---
 
@@ -322,4 +322,4 @@ $$
 f_*([z]) = g_*([z])
 $$
 
-Теорема доказана.
+■
