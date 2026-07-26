@@ -5,6 +5,13 @@
 .venv/
 .codex/
 .codex-skills/
+.agents/
+.claude/
+
+# Raw sources & AI infrastructure files
+raw/
+AGENTS.md
+CLAUDE.md
 
 # Local/editor metadata
 .DS_Store

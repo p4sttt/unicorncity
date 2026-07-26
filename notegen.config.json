@@ -1,27 +1,27 @@
 {
   "changelogPath": "changelog.jsonl",
   "siteText": {
-    "metaDescription": "Конспекты и заметки по машинному обучению, статистике, оптимизации и обучению с подкреплением.",
-    "brand": "uniCORNcity",
-    "heroEyebrow": "notes vault",
-    "heroTitle": "uniCORNcity",
-    "heroBody": "Конспекты, статьи и рабочие заметки по AI, математической статистике, оптимизации и reinforcement learning.",
-    "heroTag": "Machine learning notes",
+    "metaDescription": "Личные заметки и исследовательская вики по AI, математике, оптимизации, LLM и численым методам.",
+    "brand": "uniCORNcity & Wiki",
+    "heroEyebrow": "notes & research wiki",
+    "heroTitle": "uniCORNcity & Wiki",
+    "heroBody": "Конспекты, исследовательские статьи, обзоры и рабочие заметки по AI, мату, оптимизации, reinforcement learning и LLM.",
+    "heroTag": "Machine learning & research wiki",
     "ru": {
-      "metaDescription": "Конспекты и заметки по машинному обучению, статистике, оптимизации и обучению с подкреплением.",
-      "brand": "uniCORNcity",
-      "heroEyebrow": "notes vault",
-      "heroTitle": "uniCORNcity",
-      "heroBody": "Конспекты, статьи и рабочие заметки по AI, математической статистике, оптимизации и reinforcement learning.",
-      "heroTag": "Machine learning notes"
+      "metaDescription": "Личные заметки и исследовательская вики по AI, математике, оптимизации, LLM и численым методам.",
+      "brand": "uniCORNcity & Wiki",
+      "heroEyebrow": "notes & research wiki",
+      "heroTitle": "uniCORNcity & Wiki",
+      "heroBody": "Конспекты, исследовательские статьи, обзоры и рабочие заметки по AI, мату, оптимизации, reinforcement learning и LLM.",
+      "heroTag": "Machine learning & research wiki"
     },
     "en": {
-      "metaDescription": "Notes on machine learning, statistics, optimization, and reinforcement learning.",
-      "brand": "uniCORNcity",
-      "heroEyebrow": "notes vault",
-      "heroTitle": "uniCORNcity",
-      "heroBody": "Study notes, article summaries, and working notes on AI, mathematical statistics, optimization, and reinforcement learning.",
-      "heroTag": "Machine learning notes"
+      "metaDescription": "Personal notes and research wiki on AI, mathematics, optimization, LLMs, and numerical methods.",
+      "brand": "uniCORNcity & Wiki",
+      "heroEyebrow": "notes & research wiki",
+      "heroTitle": "uniCORNcity & Wiki",
+      "heroBody": "Study notes, research wiki, paper summaries, and working notes on AI, math statistics, optimization, reinforcement learning, and LLMs.",
+      "heroTag": "Machine learning & research wiki"
     }
   }
 }
