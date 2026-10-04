@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-04",
+  "all_checks_passed": true,
+  "python_version": "3.14.7",
+  "python_executable": "/usr/bin/python",
+  "exact_verifier_dependencies": "Python standard library only; fractions.Fraction rational arithmetic",
+  "formal_verification": false,
+  "scope": {
+    "universal_claim": "Analytic proof in theorem.md; finite tests do not establish universal quantifiers.",
+    "exact_algebra": "Polynomial denominator clearing for three sharp-constant identities; exact four-orbit symmetric-family factorization identities; rational vertex, root-isolation and derivative identities.",
+    "finite_fixtures": "40 rational weighted K4 fixtures; all 61 maximum-tree choices appearing in them; exact principal-minor PSD checks at rational factor 29/5.",
+    "schur_grid": "81 rational implementation cross-checks, not a symbolic proof of the Schur identity.",
+    "numerical_history": "results.json and followup.json copied byte-for-byte; searches and measured durations were not rerun or overwritten."
+  },
+  "commands": [
+    "python docs/research/moscow_k4_2026_10_04/exact_family.py",
+    "python docs/research/moscow_k4_2026_10_04/verify_analytic.py",
+    "python docs/research/moscow_k4_2026_10_04/verify_sharp_identities.py"
+  ],
+  "checked_outputs": {
+    "exact_family.json": {
+      "sha256": "ad874c23f8811cf957c4d00e79c0f8224966669e31208d3fb1f09397cef53a22"
+    },
+    "analytic_verification.json": {
+      "sha256": "64a58d58566bfe768cb7bc1144875bbe6e13c754f4030a703aa818f4bb74d053"
+    },
+    "sharp_identities_verification.json": {
+      "sha256": "c36409633a5a728c0de6eebeb2b9854b97b59e585d3dbe13d227f6855a09930d"
+    }
+  },
+  "historical_outputs": {
+    "results.json": {
+      "sha256": "0b3a2ab83cfface7e8c30af086f74fed3cd14639f7e0a646fe5a4e1f04adc7fc",
+      "preserved_byte_for_byte": true
+    },
+    "followup.json": {
+      "sha256": "843eb4e2ca0790c958395a5132d7c39f6c6dc70b2643f8c8e37bb0a7629edd53",
+      "preserved_byte_for_byte": true
+    }
+  },
+  "portability_smoke_check": {
+    "import_from_cwd": "/tmp",
+    "scripts": [
+      "explore.py",
+      "followup.py"
+    ],
+    "resolved_outputs_to_script_directory": true,
+    "uniform_support_factor": 4,
+    "random_search_rerun": false,
+    "numpy_version": "2.3.5"
+  }
+}

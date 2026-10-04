@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-04",
+  "files_checked": [
+    "docs/research/moscow_k4_2026_10_04/README.md",
+    "docs/research/moscow_k4_2026_10_04/analytic_verification.json",
+    "docs/research/moscow_k4_2026_10_04/exact_family.json",
+    "docs/research/moscow_k4_2026_10_04/exact_family.py",
+    "docs/research/moscow_k4_2026_10_04/explore.py",
+    "docs/research/moscow_k4_2026_10_04/followup.json",
+    "docs/research/moscow_k4_2026_10_04/followup.py",
+    "docs/research/moscow_k4_2026_10_04/independent_audit.md",
+    "docs/research/moscow_k4_2026_10_04/results.json",
+    "docs/research/moscow_k4_2026_10_04/sharp_identities_verification.json",
+    "docs/research/moscow_k4_2026_10_04/theorem.md",
+    "docs/research/moscow_k4_2026_10_04/verification_summary.json",
+    "docs/research/moscow_k4_2026_10_04/verify_analytic.py",
+    "docs/research/moscow_k4_2026_10_04/verify_sharp_identities.py",
+    "docs/research/moscow_problem_2026_10_04/README.md",
+    "docs/research/moscow_problem_2026_10_04/derivations.md",
+    "docs/research/moscow_problem_2026_10_04/sources.md",
+    "docs/research/moscow_problem_2026_10_04/validation.json",
+    "docs/research/moscow_problem_2026_10_04/weekly_structure_audit.json",
+    "wiki/concepts/moscow_problem.md"
+  ],
+  "scope": "Structural validation against current working tree, not proof certification. Exact output SHA-256 checked against verification_summary.json.",
+  "local_markdown_links_checked": 44,
+  "wikilinks_checked": 13,
+  "existing_wikilink_targets_not_yet_in_HEAD": [
+    "eckart_young_mirsky_theorem",
+    "effective_graph_resistance",
+    "moscow_problem",
+    "research_artifacts_index",
+    "spectral_graph_ddm_amg"
+  ],
+  "issues": [],
+  "exact_output_hashes_match": true,
+  "final_manuscript_reviews": {
+    "reviewers": 2,
+    "status": "PASS after clarifying original versus enlarged matrix norm; informal AI review only"
+  },
+  "search": {
+    "qmd_update": "passed",
+    "qmd_control_search": "passed; new K4 report is the first hit",
+    "qmd_embed": "Earlier attempt stopped during model loading; embeddings not refreshed."
+  }
+}

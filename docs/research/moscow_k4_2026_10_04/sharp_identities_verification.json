@@ -1,0 +1,29 @@
+{
+  "scope": "Exact rational polynomial identities. Analytic proof supplies concavity and positive denominators.",
+  "all_checks_passed": true,
+  "cleared_identities": [
+    {
+      "vertex": "tt",
+      "cleared_residual_zero": true
+    },
+    {
+      "vertex": "11",
+      "cleared_residual_zero": true
+    },
+    {
+      "vertex": "t1",
+      "cleared_residual_zero": true
+    }
+  ],
+  "root_isolation": {
+    "lower": "19/4",
+    "upper": "24/5",
+    "Q_lower": "-17/64",
+    "Q_upper": "159/125",
+    "derivative_positive_for_k_above_3": true
+  },
+  "cosine_polynomial_identity": true,
+  "constant": "2+4*cos(pi/9)",
+  "parameter": "t=3/k, k=C-1",
+  "rational_fallback": "29/5; see verify_analytic.py"
+}

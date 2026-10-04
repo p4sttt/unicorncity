@@ -1,3 +1,13 @@
+---
+title: "Research Wiki Log"
+description: "Append-only chronological log of Research Wiki ingests, queries, rewrites, and lint runs."
+type: note
+tags: ["llm", "dl", "rl", "math"]
+status: done
+date: 2026-09-10
+sources: []
+---
+
 # Wiki Log
 
 ## [2026-07-12] init | Wiki initialized
@@ -211,3 +221,31 @@ Updated: ddm_unified_framework/theory_and_derivation.md (added Asynchrony, Neura
 ## [2026-07-26] lint | Expert fixes and architecture separation
 Updated: ddm_unified_framework/index.md, ddm_unified_framework/roadmap.md, ddm_unified_framework/cost_model.md, ddm_unified_framework/algorithms_derivations.md, ddm_unified_framework/theory_and_derivation.md
 Fixed: Corrected dimensionless $\kappa$ bounds, added literature citations, formalized async trade-off (Chazan & Miranker), removed Neural-DDM, moved Kernel Fusion to Cost Model, added 1D Poisson Proof-of-Concept.
+
+## [2026-10-04] query | Московская проблема: источники, частичные решения и направления
+
+Filed: wiki/concepts/moscow_problem.md.
+Artifacts: docs/research/moscow_problem_2026_10_04/ — 27 источников, границы проверки, точные алгебраические дополнения.
+Updated: wiki/index.md, wiki/concepts/_index.md, docs/research_artifacts_index.md, changelog.jsonl.
+Findings: страница AI4OPT 2025 года устарела; проверены доказательство всего вещественного ранга 2, критерий равенства, графовая работа v2 и отдельно сентябрьская GitHub-рукопись с неформальным AI-аудитом. Общая вещественная гипотеза остаётся открытой; первые общие неразрешённые размеры 6×3. Ранжирование направлений — аналитический вывод обзора.
+Verification: точный maxvol-пример и его хороший альтернативный блок выведены в derivations.md. Вспомогательные численные проверки перечислены в README; масштабная исследовательская программа и SOS не выполнялись. Raw и исторические журналы сохранены.
+
+## [2026-10-04] lint | Ограниченная структурная проверка wiki и каталогов
+
+Scope: 245 frontmatter, 402 Markdown-цели; до добавления Moscow-заметки. Ошибок обязательных полей/локальных sources, неразрешимых ссылок, сирот и локальных ссылок каталогов не найдено. Обнаружены 14 разрешимых, но неканонических path-prefixed wikilinks в 8 прежних файлах; зафиксированы без правок посторонних тем.
+Artifact: docs/research/moscow_problem_2026_10_04/weekly_structure_audit.json.
+Limits: это структурный снимок, не полная научная ревизия, не подтверждение достаточности содержания stub-страниц и не аудит всего inbox. Статусы прежних страниц не повышались; полное weekly-содержательное обслуживание этим не сертифицировано. Поиск обновляется отдельно после сохранения материалов.
+
+Search verification 2026-10-04: qmd update/cleanup и контрольный поиск новой заметки успешны. qmd embed --timeout 2 остановлен на загрузке модели без подтверждения обновления embeddings; векторная часть обслуживания не завершена. Проверка новых файлов: docs/research/moscow_problem_2026_10_04/validation.json, issues=[].
+
+## [2026-10-04] query | Московская проблема: доказательство для всех положительных весов K4
+
+Filed: wiki/concepts/moscow_problem.md, раздел «Собственный результат: все положительные веса K4».
+Artifacts: docs/research/moscow_k4_2026_10_04/ — theorem.md, воспроизводимые точные проверки, исходные численные измерения и независимый неформальный аудит.
+Updated: wiki/index.md, wiki/concepts/_index.md, docs/research_artifacts_index.md, changelog.jsonl; прежний обзор получил ссылку на продолжение.
+Positive result: для любого положительно взвешенного K4 существует остов с исходными весами и L_G <= (2+4 cos(pi/9)) L_T. Доказательство конструктивно: максимальное дерево, переключение на звезду, компактная редукция и вогнутый Schur-сертификат. Симметричное семейство даёт точную нижнюю границу (7+sqrt(17))/2 на универсальную константу K4.
+Negative strategy results: только звёзды не имеют универсальной константы; единственное максимальное по сумме/произведению весов дерево может нарушать Московский порог 6. Это не контрпримеры исходной гипотезе.
+Verification: три точных скрипта повторно выполнены успешно; полиномиальное приведение трёх угловых тождеств, 16 деревьев симметричного семейства, 40 рациональных примеров и 61 максимальное дерево, 81 рациональная проверка дополнения Шура. Два отдельных агента проверили окончательный текст; исправлена неоднозначность обозначений после поэлементного увеличения матрицы.
+Limits: произвольные вещественные матрицы 6×3 не покрыты, точная константа K4 и научный приоритет не установлены; внешнего рецензирования и формальной верификации нет. Raw и прежние измерения сохранены. Пользователь поручил коммитить положительные или доказанные отрицательные результаты; подготовлен отдельный коммит материалов этой задачи без посторонних изменений.
+
+Search verification: qmd update и контрольный поиск «взвешенный K4» успешны. Обновление embeddings не подтверждено: прежняя попытка остановлена на загрузке модели. Структурная проверка новых материалов: docs/research/moscow_k4_2026_10_04/document_validation.json, issues=[].

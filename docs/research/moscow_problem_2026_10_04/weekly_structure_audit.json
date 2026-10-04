@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-04",
+  "scope": "Read-only lightweight structural snapshot of wiki frontmatter, sources, wikilinks, inbound links, and four wiki/docs catalogs. Not scientific validation; no qmd operation; no status promotion. Code fences ignored for wikilinks; heading anchors and general docs links not validated.",
+  "counts": {
+    "markdown_target_files": 402,
+    "frontmatter_checked_files": 245,
+    "frontmatter_source_issues": 0,
+    "wikilink_issues": 14,
+    "orphan_pages": 0,
+    "broken_catalog_markdown_links": 0
+  },
+  "preexisting_snapshot_issues": {
+    "frontmatter_sources": [],
+    "wikilinks": [
+      {
+        "path": "wiki/concepts/repository_exploration_coding_agents.md",
+        "kind": "noncanonical_path_prefixed_wikilink",
+        "target": "agents_context_representation/index",
+        "resolves_to": [
+          "wiki/agents_context_representation/index.md"
+        ]
+      },
+      {
+        "path": "wiki/concepts/structural_codebase_index.md",
+        "kind": "noncanonical_path_prefixed_wikilink",
+        "target": "agents_context_representation/index",
+        "resolves_to": [
+          "wiki/agents_context_representation/index.md"
+        ]
+      },
+      {
+        "path": "wiki/papers/code_isnt_memory_structural_index.md",
+        "kind": "noncanonical_path_prefixed_wikilink",
+        "target": "agents_context_representation/index",
+        "resolves_to": [
+          "wiki/agents_context_representation/index.md"
+        ]
+      },
+      {
+        "path": "wiki/papers/code_isnt_memory_structural_index.md",
+        "kind": "noncanonical_path_prefixed_wikilink",
+        "target": "agents_context_representation/index",
+        "resolves_to": [
+          "wiki/agents_context_representation/index.md"
+        ]
+      },
+      {
+        "path": "wiki/papers/codebase_memory_tree_sitter_kg.md",
+        "kind": "noncanonical_path_prefixed_wikilink",
+        "target": "agents_context_representation/index",
+        "resolves_to": [
+          "wiki/agents_context_representation/index.md"
+        ]
+      },
+      {
+        "path": "wiki/papers/codebase_memory_tree_sitter_kg.md",
+        "kind": "noncanonical_path_prefixed_wikilink",
+        "target": "agents_context_representation/index",
+        "resolves_to": [
+          "wiki/agents_context_representation/index.md"
+        ]
+      },
+      {
+        "path": "wiki/papers/fastcontext.md",
+        "kind": "noncanonical_path_prefixed_wikilink",
+        "target": "agents_context_representation/index",
+        "resolves_to": [
+          "wiki/agents_context_representation/index.md"
+        ]
+      },
+      {
+        "path": "wiki/papers/fastcontext.md",
+        "kind": "noncanonical_path_prefixed_wikilink",
+        "target": "agents_context_representation/index",
+        "resolves_to": [
+          "wiki/agents_context_representation/index.md"
+        ]
+      },
+      {
+        "path": "wiki/papers/harness_handbook.md",
+        "kind": "noncanonical_path_prefixed_wikilink",
+        "target": "agents_context_representation/index",
+        "resolves_to": [
+          "wiki/agents_context_representation/index.md"
+        ]
+      },
+      {
+        "path": "wiki/papers/harness_handbook.md",
+        "kind": "noncanonical_path_prefixed_wikilink",
+        "target": "agents_context_representation/index",
+        "resolves_to": [
+          "wiki/agents_context_representation/index.md"
+        ]
+      },
+      {
+        "path": "wiki/papers/sherloc.md",
+        "kind": "noncanonical_path_prefixed_wikilink",
+        "target": "agents_context_representation/index",
+        "resolves_to": [
+          "wiki/agents_context_representation/index.md"
+        ]
+      },
+      {
+        "path": "wiki/papers/sherloc.md",
+        "kind": "noncanonical_path_prefixed_wikilink",
+        "target": "agents_context_representation/index",
+        "resolves_to": [
+          "wiki/agents_context_representation/index.md"
+        ]
+      },
+      {
+        "path": "wiki/papers/swe_explore.md",
+        "kind": "noncanonical_path_prefixed_wikilink",
+        "target": "agents_context_representation/index",
+        "resolves_to": [
+          "wiki/agents_context_representation/index.md"
+        ]
+      },
+      {
+        "path": "wiki/papers/swe_explore.md",
+        "kind": "noncanonical_path_prefixed_wikilink",
+        "target": "agents_context_representation/index",
+        "resolves_to": [
+          "wiki/agents_context_representation/index.md"
+        ]
+      }
+    ],
+    "orphan_pages": [],
+    "catalog_links": []
+  },
+  "moscow_snapshot": {
+    "matching_files": [],
+    "status_review": "No preexisting Moscow-specific note found in initial snapshot; new root draft not covered. Moscow State University mention excluded.",
+    "issues": []
+  },
+  "mutation": "Only /tmp audit files written."
+}

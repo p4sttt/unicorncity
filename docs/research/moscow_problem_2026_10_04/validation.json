@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-04",
+  "files_checked": [
+    "wiki/concepts/moscow_problem.md",
+    "docs/research/moscow_problem_2026_10_04/README.md",
+    "docs/research/moscow_problem_2026_10_04/derivations.md",
+    "docs/research/moscow_problem_2026_10_04/sources.md"
+  ],
+  "source_registry_entries": 27,
+  "issues": [],
+  "math_review": "Independent read-only review; two editorial issues corrected. No formal proof certification."
+}
